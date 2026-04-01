@@ -1,0 +1,487 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\codel> cd "C:\Path\To\Your\Project"
+cd : Cannot find path 'C:\Path\To\Your\Project' because it does not exist.
+At line:1 char:1
++ cd "C:\Path\To\Your\Project"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Path\To\Your\Project:String) [Set-Location], ItemN
+   otFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS C:\Users\codel> git init
+Initialized empty Git repository in C:/Users/codel/.git/
+PS C:\Users\codel> git status
+warning: could not open directory 'AppData/Local/Application Data/': Permission denied
+warning: could not open directory 'Application Data/': Permission denied
+warning: could not open directory 'Cookies/': Permission denied
+warning: could not open directory 'Documents/My Music/': Permission denied
+warning: could not open directory 'Documents/My Pictures/': Permission denied
+warning: could not open directory 'Documents/My Videos/': Permission denied
+warning: could not open directory 'Local Settings/': Permission denied
+warning: could not open directory 'My Documents/': Permission denied
+warning: could not open directory 'NetHood/': Permission denied
+warning: could not open directory 'PrintHood/': Permission denied
+warning: could not open directory 'Recent/': Permission denied
+warning: could not open directory 'SendTo/': Permission denied
+warning: could not open directory 'Start Menu/': Permission denied
+warning: could not open directory 'Templates/': Permission denied
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .bash_history
+        .gitconfig
+        AppData/
+        CompanyProfile/
+        Contacts/
+        Downloads/
+        Favorites/
+        IntelGraphicsProfiles/
+        Links/
+        Music/
+        NTUSER.DAT
+        NTUSER.DAT{c7218d4c-281b-11f1-8de8-f9d6432f9da3}.TM.blf
+        NTUSER.DAT{c7218d4c-281b-11f1-8de8-f9d6432f9da3}.TMContainer00000000000000000001.regtrans-ms
+        NTUSER.DAT{c7218d4c-281b-11f1-8de8-f9d6432f9da3}.TMContainer00000000000000000002.regtrans-ms
+        OneDrive/
+        Saved Games/
+        Searches/
+        Videos/
+        about.html
+        contact.html
+        index.html
+        ntuser.dat.LOG1
+        ntuser.dat.LOG2
+        ntuser.ini
+        script.js
+        services.html
+        style.css
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\codel> type nul > index.html
+type : Cannot find path 'C:\Users\codel\nul' because it does not exist.
+At line:1 char:1
++ type nul > index.html
++ ~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\codel\nul:String) [Get-Content], ItemNotFoun
+   dException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+PS C:\Users\codel> type nul > style.css
+type : Cannot find path 'C:\Users\codel\nul' because it does not exist.
+At line:1 char:1
++ type nul > style.css
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\codel\nul:String) [Get-Content], ItemNotFoun
+   dException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+PS C:\Users\codel> type nul > script.js
+type : Cannot find path 'C:\Users\codel\nul' because it does not exist.
+At line:1 char:1
++ type nul > script.js
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\codel\nul:String) [Get-Content], ItemNotFoun
+   dException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+PS C:\Users\codel> echo "<!DOCTYPE html><html><head><title>My Website</title></head><body></body></html>" > index.html
+PS C:\Users\codel> echo "body { font-family: Arial; }" > style.css
+PS C:\Users\codel> echo "console.log('Hello World');" > script.js
+PS C:\Users\codel> git add index.html style.css script.js
+PS C:\Users\codel> git commit -m "Initial stable version of the website"
+[master (root-commit) 120d277] Initial stable version of the website
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 index.html
+ create mode 100644 script.js
+ create mode 100644 style.css
+PS C:\Users\codel> git tag v1.0
+PS C:\Users\codel> git tag
+v1.0
+PS C:\Users\codel> git show v1.0
+commit 120d277e145a1be8ef7f7b9c21618ae894668f27 (HEAD -> master, tag: v1.0)
+Author: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:37:21 2026 +0400
+
+    Initial stable version of the website
+
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..62b1cd7
+Binary files /dev/null and b/index.html differ
+diff --git a/script.js b/script.js
+new file mode 100644
+index 0000000..bc3713a
+Binary files /dev/null and b/script.js differ
+diff --git a/style.css b/style.css
+new file mode 100644
+index 0000000..7704826
+Binary files /dev/null and b/style.css differ
+PS C:\Users\codel> echo "<p>Welcome to our company website!</p>" >> index.html
+PS C:\Users\codel> echo "p { color: blue; }" >> style.css
+PS C:\Users\codel> type nul > about.html
+type : Cannot find path 'C:\Users\codel\nul' because it does not exist.
+At line:1 char:1
++ type nul > about.html
++ ~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\codel\nul:String) [Get-Content], ItemNotFoun
+   dException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+PS C:\Users\codel> echo "<h1>About Us</h1>" > about.html
+PS C:\Users\codel> git add index.html style.css about.html
+PS C:\Users\codel> git commit -m "Updated design and added About page"
+[master 36b232e] Updated design and added About page
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 about.html
+PS C:\Users\codel> git tag -a v2.0 -m "Second release with About page and improved design"
+PS C:\Users\codel> git show v2.0
+tag v2.0
+Tagger: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:39:11 2026 +0400
+
+Second release with About page and improved design
+
+commit 36b232e0b4c78fd4f7ee19b8df103bf775aed647 (HEAD -> master, tag: v2.0)
+Author: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:39:04 2026 +0400
+
+    Updated design and added About page
+
+diff --git a/about.html b/about.html
+new file mode 100644
+index 0000000..f9a2b53
+Binary files /dev/null and b/about.html differ
+diff --git a/index.html b/index.html
+index 62b1cd7..194579e 100644
+Binary files a/index.html and b/index.html differ
+diff --git a/style.css b/style.css
+index 7704826..e4ffb02 100644
+Binary files a/style.css and b/style.css differ
+PS C:\Users\codel> echo "<p>Contact info added below</p>" >> index.html
+PS C:\Users\codel> type nul > contact.html
+type : Cannot find path 'C:\Users\codel\nul' because it does not exist.
+At line:1 char:1
++ type nul > contact.html
++ ~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\codel\nul:String) [Get-Content], ItemNotFoun
+   dException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+PS C:\Users\codel> echo "<h1>Contact Us</h1>" > contact.html
+PS C:\Users\codel> git add index.html contact.html
+PS C:\Users\codel> git commit -m "Added contact page and updated index"
+[master d6c6780] Added contact page and updated index
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 contact.html
+PS C:\Users\codel> git log --oneline
+d6c6780 (HEAD -> master) Added contact page and updated index
+36b232e (tag: v2.0) Updated design and added About page
+120d277 (tag: v1.0) Initial stable version of the website
+PS C:\Users\codel> type nul > services.html
+type : Cannot find path 'C:\Users\codel\nul' because it does not exist.
+At line:1 char:1
++ type nul > services.html
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\codel\nul:String) [Get-Content], ItemNotFoun
+   dException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
+
+PS C:\Users\codel> echo "<h2>Our Services</h2>" > services.html
+PS C:\Users\codel> echo "<p>Services section added</p>" >> index.html
+PS C:\Users\codel> echo "h1 { color: red; }" >> style.css
+PS C:\Users\codel> git add index.html style.css
+PS C:\Users\codel> git commit -m "Updated index and style for services section"
+[master c40d799] Updated index and style for services section
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+PS C:\Users\codel> git add services.html
+PS C:\Users\codel> git commit --amend -m "Updated index, style, and added services page"
+[master 79e10a1] Updated index, style, and added services page
+ Date: Mon Mar 30 15:40:01 2026 +0400
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 services.html
+PS C:\Users\codel> git tag release-v2.1
+PS C:\Users\codel> git show release-v2.1
+commit 79e10a1a5546e4a4ac5c1adf96075a0ab246899f (HEAD -> master, tag: release-v2.1)
+Author: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:40:01 2026 +0400
+
+    Updated index, style, and added services page
+
+diff --git a/index.html b/index.html
+index d88a1dc..44e0771 100644
+Binary files a/index.html and b/index.html differ
+diff --git a/services.html b/services.html
+new file mode 100644
+index 0000000..8240843
+Binary files /dev/null and b/services.html differ
+diff --git a/style.css b/style.css
+index e4ffb02..64505db 100644
+Binary files a/style.css and b/style.css differ
+PS C:\Users\codel> echo "<p>Final updates</p>" >> index.html
+PS C:\Users\codel> echo "footer { color: gray; }" >> style.css
+PS C:\Users\codel> echo "<p>Email us at contact@example.com</p>" >> contact.html
+PS C:\Users\codel> git add index.html style.css contact.html
+PS C:\Users\codel> git commit -m "Final updates for v3.0 release"
+[master 07b27b5] Final updates for v3.0 release
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+PS C:\Users\codel> git tag -a v3.0 -m "Release version 3.0"
+PS C:\Users\codel> git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+PS C:\Users\codel> git push origin v3.0
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+PS C:\Users\codel> echo "<p>Minor update</p>" >> index.html
+PS C:\Users\codel> echo "header { font-size: 18px; }" >> style.css
+PS C:\Users\codel> echo "<p>Team section</p>" >> about.html
+PS C:\Users\codel> git add index.html style.css about.html
+PS C:\Users\codel> git commit -m "Minor updates for release"
+[master d6a6ed9] Minor updates for release
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+PS C:\Users\codel> git tag wrong-tag
+PS C:\Users\codel> git tag -d wrong-tag
+Deleted tag 'wrong-tag' (was d6a6ed9)
+PS C:\Users\codel> git tag v3.1
+PS C:\Users\codel> git tag
+release-v2.1
+v1.0
+v2.0
+v3.0
+v3.1
+PS C:\Users\codel> git show v3.1
+commit d6a6ed92edd5654a896d57098a03ba40947968d7 (HEAD -> master, tag: v3.1)
+Author: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:41:05 2026 +0400
+
+    Minor updates for release
+
+diff --git a/about.html b/about.html
+index f9a2b53..5da650a 100644
+Binary files a/about.html and b/about.html differ
+diff --git a/index.html b/index.html
+index 06d1a84..722500c 100644
+Binary files a/index.html and b/index.html differ
+diff --git a/style.css b/style.css
+index 6bf5a69..0a6397d 100644
+Binary files a/style.css and b/style.css differ
+PS C:\Users\codel> echo "<p>Final update for version 3.2</p>" >> index.html
+PS C:\Users\codel> echo "nav { background: #eee; }" >> style.css
+PS C:\Users\codel> echo "<p>Updated services info</p>" >> services.html
+PS C:\Users\codel> git add index.html style.css services.html
+PS C:\Users\codel> git commit -m "Final updates for version 3.2"
+[master cb004ff] Final updates for version 3.2
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+PS C:\Users\codel> git tag -a version3.2 -m "Wrong tag"
+PS C:\Users\codel> git tag -d version3.2
+Deleted tag 'version3.2' (was 3295cba)
+PS C:\Users\codel> git push origin --delete version3.2
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+PS C:\Users\codel> git tag -a v3.2 -m "Release version 3.2"
+PS C:\Users\codel> git push origin v3.2
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+PS C:\Users\codel> git tag
+release-v2.1
+v1.0
+v2.0
+v3.0
+v3.1
+v3.2
+PS C:\Users\codel> git show v3.2
+tag v3.2
+Tagger: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:42:09 2026 +0400
+
+Release version 3.2
+
+commit cb004ff9bda32313492fd8beb003d4a99a89c5d0 (HEAD -> master, tag: v3.2)
+Author: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:41:43 2026 +0400
+
+    Final updates for version 3.2
+
+diff --git a/index.html b/index.html
+index 722500c..c2dc377 100644
+Binary files a/index.html and b/index.html differ
+diff --git a/services.html b/services.html
+index 8240843..c028f9c 100644
+Binary files a/services.html and b/services.html differ
+diff --git a/style.css b/style.css
+index 0a6397d..9498984 100644
+Binary files a/style.css and b/style.css differ
+PS C:\Users\codel> echo "<p>Improvements for v4.0</p>" >> index.html
+PS C:\Users\codel> echo "main { margin: 0 auto; }" >> style.css
+PS C:\Users\codel> echo "<p>Company history</p>" >> about.html
+PS C:\Users\codel> git add index.html style.css about.html
+PS C:\Users\codel> git commit -m "Updated project for v4.0 release"
+[master a0d6a18] Updated project for v4.0 release
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+PS C:\Users\codel> git tag -a v4.0 -m "Release version 4.0"
+PS C:\Users\codel> git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+PS C:\Users\codel> git push --tags
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+PS C:\Users\codel> git tag
+release-v2.1
+v1.0
+v2.0
+v3.0
+v3.1
+v3.2
+v4.0
+PS C:\Users\codel> git show v4.0
+tag v4.0
+Tagger: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:42:45 2026 +0400
+
+Release version 4.0
+
+commit a0d6a1824ae9de05085f40b9f73758a0cf3677f8 (HEAD -> master, tag: v4.0)
+Author: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:42:41 2026 +0400
+
+    Updated project for v4.0 release
+
+diff --git a/about.html b/about.html
+index 5da650a..296dca2 100644
+Binary files a/about.html and b/about.html differ
+diff --git a/index.html b/index.html
+index c2dc377..e4b408f 100644
+Binary files a/index.html and b/index.html differ
+diff --git a/style.css b/style.css
+index 9498984..70257ed 100644
+Binary files a/style.css and b/style.css differ
+PS C:\Users\codel> echo "<p>Fixes for v4.1</p>" >> index.html
+PS C:\Users\codel> echo "section { padding: 20px; }" >> style.css
+PS C:\Users\codel> echo "<p>New contact info</p>" >> contact.html
+PS C:\Users\codel> git add index.html style.css contact.html
+PS C:\Users\codel> git commit -m "Fixes and updates for v4.1 release"
+[master 30c759d] Fixes and updates for v4.1 release
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+PS C:\Users\codel> git tag -d v4.1
+error: tag 'v4.1' not found.
+PS C:\Users\codel> git tag v4.1
+PS C:\Users\codel> git tag
+release-v2.1
+v1.0
+v2.0
+v3.0
+v3.1
+v3.2
+v4.0
+v4.1
+PS C:\Users\codel> git show v4.1
+commit 30c759daaea82b75bc53ef42b4a72cc27d68a350 (HEAD -> master, tag: v4.1)
+Author: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:43:21 2026 +0400
+
+    Fixes and updates for v4.1 release
+
+diff --git a/contact.html b/contact.html
+index b7898ec..c5288a2 100644
+Binary files a/contact.html and b/contact.html differ
+diff --git a/index.html b/index.html
+index e4b408f..db90731 100644
+Binary files a/index.html and b/index.html differ
+diff --git a/style.css b/style.css
+index 70257ed..98aef8b 100644
+Binary files a/style.css and b/style.css differ
+PS C:\Users\codel> git tag backup-v4.1
+PS C:\Users\codel> echo "<p>New features for v5.0</p>" >> index.html
+PS C:\Users\codel> echo "footer { background: #333; color: #fff; }" >> style.css
+PS C:\Users\codel> echo "<p>Added new services section</p>" >> services.html
+PS C:\Users\codel> git add index.html style.css services.html
+PS C:\Users\codel> git commit -m "Prepare website for v5.0 release"
+[master b189000] Prepare website for v5.0 release
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+PS C:\Users\codel> git tag -a v5.0 -m "Release version 5.0"
+PS C:\Users\codel> git tag
+backup-v4.1
+release-v2.1
+v1.0
+v2.0
+v3.0
+v3.1
+v3.2
+v4.0
+v4.1
+v5.0
+PS C:\Users\codel> git show backup-v4.1
+commit 30c759daaea82b75bc53ef42b4a72cc27d68a350 (tag: v4.1, tag: backup-v4.1)
+Author: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:43:21 2026 +0400
+
+    Fixes and updates for v4.1 release
+
+diff --git a/contact.html b/contact.html
+index b7898ec..c5288a2 100644
+Binary files a/contact.html and b/contact.html differ
+diff --git a/index.html b/index.html
+index e4b408f..db90731 100644
+Binary files a/index.html and b/index.html differ
+diff --git a/style.css b/style.css
+index 70257ed..98aef8b 100644
+Binary files a/style.css and b/style.css differ
+PS C:\Users\codel> git show v5.0
+tag v5.0
+Tagger: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:44:08 2026 +0400
+
+Release version 5.0
+
+commit b189000777cadfa993aea0bee07c67c95e98ce8c (HEAD -> master, tag: v5.0)
+Author: Codeline Codeline <16J21185@utas.edu.om>
+Date:   Mon Mar 30 15:44:04 2026 +0400
+
+    Prepare website for v5.0 release
+
+diff --git a/index.html b/index.html
+index db90731..114fb6a 100644
+Binary files a/index.html and b/index.html differ
+diff --git a/services.html b/services.html
+index c028f9c..ce5530e 100644
+Binary files a/services.html and b/services.html differ
+diff --git a/style.css b/style.css
+index 98aef8b..db6f9e1 100644
+Binary files a/style.css and b/style.css differ
+PS C:\Users\codel>

@@ -1,0 +1,757 @@
+Q48 — First Last 6 
+Given a LIST of NUMBERs, return TRUE if 6 appears as either the FIRST or LAST element. The LIST will 
+be length 1 or more. 
+
+Test Cases: 
+firstLast6([1, 2, 6])      → TRUE 
+firstLast6([6, 1, 2, 3])    → TRUE 
+firstLast6([13, 6, 1, 2, 3]) → FALSE
+
+START
+BEGIN 
+
+SET NUMS TO USER INOUT LIST
+
+
+IF NUMS[0] EQUAL 6 OR NUMS[LENGTH OF NUMS - 1] EQUAL 6 THEN
+	DISOLAY TRUE
+ELSE
+	DISPLAY FALSE
+END IF
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q49 — Same First Last 
+Given a LIST of NUMBERs, return TRUE if the LIST is length 1 or more AND the FIRST and LAST 
+elements are equal. 
+Test Cases: 
+sameFirstLast([1, 2, 3])    → FALSE 
+sameFirstLast([1, 2, 3, 1]) → TRUE 
+sameFirstLast([1, 2, 1])    → TRUE 
+
+
+START
+BEGIN
+
+SET NUMS TO USER INPUT LIST
+
+
+IF LENGTH OF NUMS GRATER THAN EQUAL TO 1 AND
+    NUMS[0] EQUAL NUMS[LENGTH OF NUMS - 1] THEN
+	DISPLAY TRUE
+ELSE
+	DISPLAY FALSE
+END IF
+
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q50 — Make Pi 
+Return a LIST of length 3 containing the first 3 digits of pi: 3, 1, 4. 
+Test Cases: 
+makePi() → [3, 1, 4] 
+
+START
+BEGIN
+
+SET PI_LIST TO [3, 1, 4]
+DISPLAY PI_LIST
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q51 — Common End 
+Given 2 LISTS of NUMBERs A and B, return TRUE if they share the same FIRST element OR the same 
+LAST element. Both LISTS will be length 1 or more. 
+Test Cases: 
+commonEnd([1, 2, 3], [7, 3])    → TRUE 
+commonEnd([1, 2, 3], [7, 3, 2]) → FALSE 
+commonEnd([1, 2, 3], [1, 3])    → TRUE 
+
+
+START
+BEGIN
+SET A TO USER INPUT LIST
+SET B TO USER INPUT LIST
+
+IF A[0] EQUALS B[0] OR A[LENGTH OF A - 1] EQUALS B[LENGTH OF B - 1] THEN
+    DISPLAY TRUE
+ELSE
+    DISPLAY FALSE
+END IF
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q52 — Sum 3 
+Given a LIST of NUMBERs of exactly length 3, return the SUM of all its elements. 
+Test Cases: 
+sum3([1, 2, 3])  → 6 
+sum3([5, 11, 2]) → 18 
+sum3([7, 0, 0])  → 7 
+
+SET NUMS TO USER INPUT LIST
+
+SET TOTAL TO NUMS[0] + NUMS[1] + NUMS[2]
+
+DISPLAY TOTAL
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q53 — Rotate Left 3 
+Given a LIST of NUMBERs of exactly length 3, return a new LIST with the elements "rotated left" — 
+the first element moves to the end. 
+Test Cases: 
+rotateLeft3([1, 2, 3])  → [2, 3, 1] 
+rotateLeft3([5, 11, 9]) → [11, 9, 5] 
+rotateLeft3([7, 0, 0])  → [0, 0, 7]
+
+
+START
+BEGIN
+SET NUMS TO USER INPUT LIST 
+
+SET ROTATED_LIST TO [NUMS[1], NUMS[2], NUMS[0]]
+
+DISPLAY ROTATED_LIST
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q54 — Reverse 3 
+Given a LIST of NUMBERs of exactly length 3, return a new LIST with the elements in REVERSE order. 
+Test Cases: 
+reverse3([1, 2, 3])  → [3, 2, 1] 
+reverse3([5, 11, 9]) → [9, 11, 5] 
+reverse3([7, 0, 0])  → [0, 0, 7] 
+
+
+START
+BEGIN
+
+SET NUMS TO USER INPUT LIST
+
+SET REVERSE_LIST TO [NUMS[2], NUMS[1], NUMS[0]]
+
+DISPLAY REVERSE_LIST
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q55 — Max End 3 
+Given a LIST of NUMBERs of exactly length 3, find the LARGER of the first and last elements. Set ALL 
+elements to that value and return the changed LIST. 
+Test Cases: 
+maxEnd3([1, 2, 3])   → [3, 3, 3] 
+maxEnd3([11, 5, 9])  → [11, 11, 11] 
+maxEnd3([2, 11, 3])  → [3, 3,3]
+
+
+START
+BEGIN
+
+SET NUMS TO UAER INPUT LIST
+
+IF NUMS[0] IS GREATER THAN OR EQUAL TO NUMS[2] THEN
+	SET MAX TO NUMS[0]
+ELSE
+	SET MAX TO NUMS[2]
+END ID
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q56 — Sum 2 
+Given a LIST of NUMBERs, return the SUM of the FIRST 2 elements. If the LIST has fewer than 2 
+elements, sum whatever is there. Return 0 if the LIST is empty. 
+Test Cases: 
+sum2([1, 2, 3])      
+sum2([1, 1])          
+ → 3 
+→ 2 
+sum2([1, 1, 1, 1])    → 2
+
+
+START
+BEGIN
+SET NUMS TO USER INPUT LIST
+
+IF LENGTH OF NUMS EQUALS 0 THEN
+    DISPLAY 0
+ELSE IF LENGTH OF NUMS EQUALS 1 THEN
+    DISPLAY NUMS[0]
+ELSE
+    DISPLAY NUMS[0] + NUMS[1]
+END IF
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q57 — Middle Way 
+Given 2 LISTS of NUMBERs A and B, each exactly length 3, return a new LIST of length 2 containing 
+the MIDDLE element of each. 
+Test Cases: 
+middleWay([1, 2, 3], [4, 5, 6]) → [2, 5] 
+middleWay([7, 7, 7], [3, 8, 0]) → [7, 8] 
+middleWay([5, 2, 9], [1, 4, 5]) → [2, 4] 
+
+
+START
+BEGIN
+
+SET A TO USER INPUT LIST      // list of length 3
+SET B TO USER INPUT LIST     // list of length 3
+
+
+SET MIDDLE_LIST TO [A[1], B[1]]
+
+DISPLAY MIDDLE_LIST
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q58 — Make Ends 
+Given a LIST of NUMBERs, return a new LIST of length 2 containing the FIRST and LAST elements of 
+the original. The LIST will be length 1 or more. 
+Test Cases: 
+makeEnds([1, 2, 3])       
+→ [1, 3] 
+makeEnds([1, 2, 3, 4])    → [1, 4] 
+makeEnds([7, 4, 6, 2])    → [7, 2] 
+
+
+SET NUMS TO USER INPUT LIST   //list of length 2
+
+
+SET NEW_LIST TO [NUMS[0], NUMS[2]]
+
+DISPLAY NEW_LIST
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q59 — Has 2 3 
+Given a LIST of NUMBERs of exactly length 2, return TRUE if it contains a 2 OR a 3. 
+Test Cases: 
+has23([2, 5]) → TRUE 
+has23([4, 3]) → TRUE 
+has23([4, 5]) → FALSE 
+
+START
+BEGIN
+
+SET NUMS TO INPUT LIST  //list of length 2
+
+
+IF NUMS[0] EQUAL 2 OR NUMS[0] EQUAL 3 OR NUMS[1] EQUAL 2 OR NUMS[1] EQUAL 3 THEN
+	DISPLAY TRUE
+
+ELSE
+	DISPLAY FALSE
+
+END IF
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q60 — No 2 3 
+Given a LIST of NUMBERs of exactly length 2, return TRUE if it does NOT contain a 2 or a 3. 
+Test Cases: 
+no23([4, 5]) → TRUE 
+no23([4, 2]) → FALSE 
+no23([3, 5]) → FALSE 
+
+START
+BEGIN
+
+SET NUMS TO INPUT LIST  //list of length 2
+
+
+IF NUMS[0] EQUAL 2 OR NUMS[0] EQUAL 3 OR NUMS[1] EQUAL 2 OR NUMS[1] EQUAL 3 THEN
+	DISPLAY FALSE
+
+ELSE
+	DISPLAY TRUE
+
+END IF
+
+END 
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q61 — Make Last 
+Given a LIST of NUMBERs, return a new LIST with DOUBLE the length where all elements are 0 
+EXCEPT the very last element, which matches the last element of the original LIST. 
+Test Cases: 
+makeLast([4, 5, 6]) → [0, 0, 0, 0, 0, 6] 
+makeLast([1, 2])    → [0, 0, 0, 2] 
+makeLast([3])      
+ → [0, 3]
+
+
+START
+BEGIN
+
+SET NUMS TO USER INPUT LIST
+
+SET NEW_LENGTH TO LENGTH OF NUMS * 2
+SET NEW_LIST TO LIST OF ZEROS WITH LENGTH NEW_LENGTH
+
+SET NEW_LIST[NEW_LENGTH - 1] TO NUMS[LENGTH OF NUMS - 1]
+
+DISPLAY NEW_LIST
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q62 — Double 2 3 
+Given a LIST of NUMBERs of length 0, 1, or 2, return TRUE if the LIST contains 2 exactly twice OR 3 
+exactly twice. 
+Test Cases: 
+double23([2, 2]) → TRUE 
+double23([3, 3]) → TRUE 
+double23([2, 3]) → FALSE 
+
+
+START
+BEGIN
+SET NUMS TO USER INPUT LIST  // length 0, 1, or 2
+
+SET COUNT_2 TO 0
+SET COUNT_3 TO 0
+
+FOR EACH NUM IN NUMS
+    IF NUM EQUALS 2 THEN
+        INCREMENT COUNT_2 BY 1
+    ELSE IF NUM EQUALS 3 THEN
+        INCREMENT COUNT_3 BY 1
+    END IF
+END FOR
+
+IF COUNT_2 EQUALS 2 OR COUNT_3 EQUALS 2 THEN
+    DISPLAY TRUE
+ELSE
+    DISPLAY FALSE
+END IF
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q63 — Fix 2 3 
+Given a LIST of NUMBERs of exactly length 3, if a 2 appears immediately followed by a 3, replace 
+that 3 with 0. Return the modified LIST. 
+Test Cases: 
+fix23([1, 2, 3]) → [1, 2, 0] 
+fix23([2, 3, 5]) → [2, 0, 5] 
+fix23([1, 2, 1]) → [1, 2, 1] 
+
+
+
+START
+BEGIN
+SET NUMS TO USER INPUT LIST  // list of length 3
+
+IF NUMS[0] EQUALS 2 AND NUMS[1] EQUALS 3 THEN
+    SET NUMS[1] TO 0
+END IF
+
+IF NUMS[1] EQUALS 2 AND NUMS[2] EQUALS 3 THEN
+    SET NUMS[2] TO 0
+END IF
+
+DISPLAY NUMS
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q64 — Start 1 
+Given 2 LISTS of NUMBERs A and B of any length, return a count of how many of the LISTS have 1 as 
+their FIRST element. 
+Test Cases: 
+start1([1, 2, 3], [1, 3]) → 2 
+start1([7, 2, 3], [1])    → 1 
+start1([1, 2], [])       
+ → 1
+
+
+START
+BEGIN
+SET A TO USER INPUT LIST
+SET B TO USER INPUT LIST
+
+SET COUNT TO 0
+
+IF LENGTH OF A GREATER THAN 0 AND A[0] EQUALS 1 THEN
+    INCREMENT COUNT BY 1
+END IF
+
+IF LENGTH OF B GREATER THAN 0 AND B[0] EQUALS 1 THEN
+    INCREMENT COUNT BY 1
+END IF
+
+DISPLAY COUNT
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q65 — Bigger Two 
+Given 2 LISTS of NUMBERs A and B, each exactly length 2, return the LIST whose elements have the 
+LARGER SUM. In the event of a tie, return A. 
+Test Cases: 
+biggerTwo([1, 2], [3, 4]) → [3, 4] 
+biggerTwo([3, 4], [1, 2]) → [3, 4] 
+biggerTwo([1, 1], [1, 2]) → [1, 2] 
+
+START
+BEGIN
+SET A TO USER INPUT LIST  // list of length 2
+SET B TO USER INPUT LIST  // list of length 2
+
+SET SUM_A TO A[0] + A[1]
+SET SUM_B TO B[0] + B[1]
+
+IF SUM_A GREATER THAN SUM_B THEN
+    DISPLAY A
+ELSE
+    DISPLAY B
+END IF
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q66 — Make Middle 
+Given a LIST of NUMBERs of even length (length 2 or more), return a new LIST of length 2 containing 
+the TWO MIDDLE elements. 
+Test Cases: 
+makeMiddle([1, 2, 3, 4])         
+ → [2, 3] 
+makeMiddle([7, 1, 2, 3, 4, 9])    → [2, 3] 
+makeMiddle([1, 2])                
+ → [1, 2] 
+
+
+START
+BEGIN
+SET NUMS TO USER INPUT LIST  // even length GREATER THAN OR EQUAL 2
+
+SET MID_INDEX TO LENGTH OF NUMS / 2  // middle index
+
+SET MIDDLE_LIST TO [NUMS[MID_INDEX - 1], NUMS[MID_INDEX]]
+
+DISPLAY MIDDLE_LIST
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q67 — Plus Two 
+Given 2 LISTS of NUMBERs A and B, each exactly length 2, return a new LIST of length 4 with all 
+elements from A followed by all elements from B. 
+Test Cases: 
+plusTwo([1, 2], [3, 4]) → [1, 2, 3, 4] 
+plusTwo([4, 4], [2, 2]) → [4, 4, 2, 2] 
+plusTwo([9, 2], [3, 4]) → [9, 2, 3, 4] 
+
+
+START
+BEGIN
+SET A TO USER INPUT LIST  // list of length 2
+SET B TO USER INPUT LIST  // list of length 2
+
+SET NEW_LIST TO [A[0], A[1], B[0], B[1]]
+
+DISPLAY NEW_LIST
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q68 — Swap Ends 
+Given a LIST of NUMBERs, swap the FIRST and LAST elements and return the modified LIST. The LIST 
+will be length 1 or more. 
+Test Cases: 
+swapEnds([1, 2, 3, 4])       
+swapEnds([1, 2, 3])          
+→ [4, 2, 3, 1] 
+→ [3, 2, 1] 
+swapEnds([8, 6, 7, 9, 5])    → [5, 6, 7, 9, 8]
+
+START
+BEGIN
+SET NUMS TO USER INPUT LIST  // length GREATER THAN OR EQUAL 1
+
+SET TEMP TO NUMS[0]
+SET NUMS[0] TO NUMS[LENGTH OF NUMS - 1]
+SET NUMS[LENGTH OF NUMS - 1] TO TEMP
+
+DISPLAY NUMS
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q69 — Mid Three 
+Given a LIST of NUMBERs of odd length (length 3 or more), return a new LIST of length 3 containing 
+the THREE MIDDLE elements. 
+Test Cases: 
+midThree([1, 2, 3, 4, 5])          
+→ [2, 3, 4] 
+midThree([8, 6, 7, 5, 3, 0, 9])    → [7, 5, 3] 
+midThree([1, 2, 3])                 
+→ [1, 2, 3] 
+
+START
+BEGIN
+SET NUMS TO USER INPUT LIST  // odd length GREATER THAN OR EQUAL 3
+
+SET MID_INDEX TO LENGTH OF NUMS / 2  // middle index (integer division)
+
+SET MIDDLE_LIST TO [NUMS[MID_INDEX - 1], NUMS[MID_INDEX], NUMS[MID_INDEX + 1]]
+
+DISPLAY MIDDLE_LIST
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q70 — Max Triple 
+Given a LIST of NUMBERs of odd length (length 1 or more), look at only the FIRST, LAST, and MIDDLE 
+values and return the LARGEST of those three. 
+Test Cases: 
+maxTriple([1, 2, 3]) → 3 
+maxTriple([1, 5, 3]) → 5 
+maxTriple([5, 2, 3]) → 5 
+
+
+START
+BEGIN
+SET NUMS TO USER INPUT LIST  // odd length  GREATER THAN OR EQUAL 1
+
+SET MID_INDEX TO LENGTH OF NUMS / 2  // middle index (integer division)
+
+SET FIRST TO NUMS[0]
+SET MIDDLE TO NUMS[MID_INDEX]
+SET LAST TO NUMS[LENGTH OF NUMS - 1]
+
+IF FIRST GREATER THAN OR EQUAL TO MIDDLE AND FIRST GREATER THAN OR EQUAL TO LAST THEN
+    SET MAX TO FIRST
+ELSE IF MIDDLE GREATER THAN OR EQUAL TO FIRST AND MIDDLE GREATER THAN OR EQUAL TO LAST THEN
+    SET MAX TO MIDDLE
+ELSE
+    SET MAX TO LAST
+END IF
+
+DISPLAY MAX
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q71 — Front Piece 
+Given a LIST of NUMBERs of any length, return a new LIST containing only the FIRST 2 elements. If 
+the LIST has fewer than 2 elements, include whatever is there. 
+Test Cases: 
+frontPiece([1, 2, 3]) → [1, 2] 
+frontPiece([1, 2])    → [1, 2] 
+frontPiece([1])       → [1]
+
+
+START
+BEGIN
+SET NUMS TO USER INPUT LIST
+
+IF LENGTH OF NUMS GREATER THAN OR EQUAL TO 2 THEN
+    SET NEW_LIST TO [NUMS[0], NUMS[1]]
+ELSE
+    SET NEW_LIST TO NUMS  // whatever elements are present
+END IF
+
+DISPLAY NEW_LIST
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q72 — Unlucky 1 
+A "1" immediately followed by a "3" is unlucky. Given a LIST of NUMBERs, return TRUE if an unlucky 
+1 appears in the FIRST 2 or LAST 2 positions of the LIST. 
+Test Cases: 
+unlucky1([1, 3, 4, 5])    → TRUE 
+unlucky1([2, 1, 3, 4, 5]) → TRUE 
+unlucky1([1, 1, 1])      → FALSE 
+
+START
+BEGIN
+SET NUMS TO USER INPUT LIST
+SET LENGTH TO LENGTH OF NUMS
+
+IF LENGTH GREATER THAN OR EQUAL TO 2 THEN
+    // Check first two positions
+    IF NUMS[0] EQUALS 1 AND NUMS[1] EQUALS 3 THEN
+        DISPLAY TRUE
+        STOP
+    END IF
+
+    // Check positions 1 and 2 if list has at least 3 elements
+    IF LENGTH GREATER THAN OR EQUAL TO 3 AND NUMS[1] EQUALS 1 AND NUMS[2] EQUALS 3 THEN
+        DISPLAY TRUE
+        STOP
+    END IF
+
+    // Check last two positions
+    IF NUMS[LENGTH - 2] EQUALS 1 AND NUMS[LENGTH - 1] EQUALS 3 THEN
+        DISPLAY TRUE
+        STOP
+    END IF
+END IF
+
+DISPLAY FALSE
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Q73 — Make 2 
+Given 2 LISTS of NUMBERs A and B of any length, return a new LIST of exactly length 2 filled with as 
+many elements from A first, then B, as needed. There will always be at least 2 elements available 
+between both LISTS. 
+Test Cases: 
+make2([4, 5], [1, 2, 3]) → [4, 5] 
+make2([4], [1, 2, 3])    → [4, 1] 
+make2([], [1, 2])         → [1, 2] 
+
+START
+BEGIN
+SET A TO USER INPUT LIST
+SET B TO USER INPUT LIST
+
+SET NEW_LIST TO EMPTY LIST
+
+// Add elements from A first
+FOR EACH ELEMENT IN A
+    IF LENGTH OF NEW_LIST LESS THAN 2 THEN
+        APPEND ELEMENT TO NEW_LIST
+    END IF
+END FOR
+
+// Add elements from B if needed
+FOR EACH ELEMENT IN B
+    IF LENGTH OF NEW_LIST LESS THAN 2 THEN
+        APPEND ELEMENT TO NEW_LIST
+    END IF
+END FOR
+
+DISPLAY NEW_LIST
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q74 — Front 11 
+Given 2 LISTS of NUMBERs A and B of any length, return a new LIST containing the FIRST element of 
+each LIST. If either LIST is empty, ignore that LIST. 
+Test Cases: 
+front11([1, 2, 3], [7, 9, 8]) → [1, 7] 
+front11([1], [2])             → [1, 2] 
+front11([1, 7], [])            → [1] 
+
+START
+BEGIN
+SET A TO USER INPUT LIST
+SET B TO USER INPUT LIST
+
+SET NEW_LIST TO EMPTY LIST
+
+IF LENGTH OF A GREATER THAN 0 THEN
+    APPEND A[0] TO NEW_LIST
+END IF
+
+IF LENGTH OF B GREATER THAN 0 THEN
+    APPEND B[0] TO NEW_LIST
+END IF
+
+DISPLAY NEW_LIST
+
+END
+STOP
+
+
+
+
+....................................................END............................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

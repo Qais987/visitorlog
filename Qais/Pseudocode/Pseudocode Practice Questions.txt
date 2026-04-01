@@ -1,0 +1,867 @@
+Q1 — Sleep In 
+The parameter WEEKDAY is TRUE if it is a weekday, and VACATION is TRUE if we are on vacation. 
+We sleep in if it is NOT a weekday OR we are on vacation. Return TRUE if we sleep in. 
+Test Cases: 
+
+sleepIn(FALSE, FALSE) → TRUE 
+sleepIn(TRUE, FALSE)  → FALSE 
+sleepIn(FALSE, TRUE)  → TRUE 
+
+START 
+BEGIN 
+	SET WEEKDAY TO (TRUE OR FALSE) 
+	SET VACATION TO (TRUE OR FALSE)
+ 
+	IF NOT WEEKDAY OR VACATION THEN 
+		DISPLAY TRUE 
+	ELSE 
+		DISPLAY FALSE 
+	END IF 
+END 
+STOP 
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q2 — Monkey Trouble 
+Two monkeys A and B. ASMILE and BSMILE indicate if each is smiling. We are in trouble if BOTH are 
+smiling OR NEITHER is smiling. Return TRUE if we are in trouble. 
+
+Test Cases: 
+monkeyTrouble(TRUE, TRUE)   → TRUE 
+monkeyTrouble(FALSE, FALSE) → TRUE 
+monkeyTrouble(TRUE, FALSE)  → FALSE 
+
+START 
+BEGIN 
+	SET ASMILE TO (TRUE OR FALSE)
+	SET BSMILE TO (TRUE OR FALSE)
+	 IF (ASMILE AND BSMILE) OR (NOT ASMILE AND NOT BSMILE) THEN 
+		DISPLAY TRUE
+	ELSE 
+		DISPLAY FALSE 
+	END IF 
+END 
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q3 — Sum Double 
+Given two NUMBER values A and B, return their sum. Unless the two values are the same, then return 
+DOUBLE their sum. 
+
+Test Cases: 
+sumDouble(1, 2) → 3 
+sumDouble(3, 2) → 5 
+sumDouble(2, 2) → 8 
+
+
+START 
+BEGIN 
+	SET A TO NUMBER 
+	SET B TO NUMBER
+	IF A EQUALS B THEN 
+		DISPLAY (A + B) * 2 
+	ELSE 
+		DISPLAY A + B 
+	END IF 
+END 
+STOP 
+
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q4 — Diff 21 
+Given a NUMBER N, return the absolute difference between N and 21. However, if N is OVER 21, return 
+DOUBLE the absolute difference. 
+
+Test Cases: 
+diff21(19) → 2 
+diff21(10) → 11 
+diff21(21) → 0 
+
+START 
+BEGIN 
+	SET N TO NUMBER 
+	IF N GREATER THAN 21 THEN 
+		DISPLAY  (N - 21) * 2
+	ELSE 
+		DISPLAY 21 - N
+	END IF 
+END 
+STOP 
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q5 — Parrot Trouble 
+A parrot is talking if TALKING is TRUE. HOUR is the current hour in range 0–23. We are in trouble if 
+the parrot is talking AND the hour is before 7 OR after 20. Return TRUE if we are in trouble. 
+
+Test Cases: 
+parrotTrouble(TRUE, 6)  → TRUE 
+parrotTrouble(TRUE, 7)  → FALSE 
+parrotTrouble(FALSE, 6) → FALSE
+
+ 
+START 
+BEGIN 
+	SET TALKING TO (TRUE OR FALSE)
+	SET HOUR TO NUMBER 
+	IF TALKING EQUALS TRUE AND (HOUR LESS THAN 7 OR HOUR GREATER THAN 20) THEN 
+		DISPLAY TRUE 
+	ELSE 
+		DISPLAY FALSE
+	END IF 
+END 
+STOP 
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+
+Q6 — Makes 10 
+Given 2 NUMBER values A and B, return TRUE if one of them is 10 OR if their sum is 10.
+ 
+Test Cases: 
+makes10(9, 10) → TRUE 
+makes10(9, 9)  → FALSE 
+makes10(1, 9)  → TRUE 
+
+START 
+BEGIN 
+	SET A TO NUMBER
+	SET B TO NUMBER
+	IF A EQUALS 10 OR B EQUALS 10 OR (A + B) EQUALS 10 THEN 
+		DISPLAY TRUE 
+	ELSE 
+		DISPLAY FALSE 
+	END IF 
+END 
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q7 — Near Hundred 
+Given a NUMBER N, return TRUE if it is within 10 of 100 OR within 10 of 200.
+ 
+Test Cases: 
+nearHundred(93)  → TRUE 
+nearHundred(90)  → TRUE 
+nearHundred(89)  → FALSE 
+
+
+START 
+BEGIN 
+	SET N TO ___ 
+	IF (N GREATER THAN OR EQUAL TO 90 AND N LESS THAN OR EQUAL TO 110)
+       		OR (N GREATER THAN OR EQUAL TO 190 AND N LESS THAN OR EQUAL TO 210) THEN
+        	    DISPLAY TRUE
+	ELSE 
+		    DISPLAY FALSE
+	END IF 
+END 
+STOP
+
+
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+
+Q8 — Pos Neg 
+Given 2 NUMBER values A and B and a BOOLEAN NEGATIVE, return TRUE if one is negative and 
+one is positive. If NEGATIVE is TRUE, return TRUE only if BOTH are negative. 
+
+Test Cases: 
+posNeg(1, -1, FALSE)  → TRUE 
+posNeg(-1, 1, FALSE)  → TRUE 
+posNeg(-4, -5, TRUE)  → TRUE 
+
+
+START 
+BEGIN 
+	SET A TO NUMBER
+	SET B TO NUMBER
+	SET NEGATIVE TO (TRUE OR FALSE)
+ 
+	IF NEGATIVE EQUALS TRUE THEN 
+	   IF A LESS THEN 0 AND B LESS THAN 0 THEN 
+		DISPLAY TRUE 
+	ELSE 
+		DISPLAY FALSE 
+	END IF 
+	ELSE 
+	   IF (A LESS THAN 0 AND B GREATER THAN 0) OR (A GREATER THAN 0 AND B LESS THAN 0) THEN 
+		DISPLAY TRUE
+	   ELSE 
+		DISPLAY FALSE 
+	   END IF 
+	END IF 
+END 
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+
+ Q9 — Not String 
+Given a TEXT value STR, return a new TEXT with "not " added to the front. If the string already 
+begins with "not", return it unchanged.
+ 
+Test Cases: 
+notString("candy")   → "not candy" 
+notString("x")       
+→ "not x" 
+notString("not bad") → "not bad" 
+
+
+
+START
+BEGIN
+    SET STR TO TEXT
+
+    IF FIRST 3 CHARACTERS OF STR EQUALS "not" THEN
+        DISPLAY STR
+    ELSE
+        DISPLAY "not " + STR
+    END IF
+END
+STOP
+
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q10 — Missing Char 
+Given a TEXT STR and a NUMBER N, return a new TEXT where the character at index N has been 
+removed. 
+
+Test Cases: 
+missingChar("kitten", 1) → "ktten" 
+missingChar("kitten", 0) → "itten" 
+missingChar("kitten", 4) → "kittn" 
+
+START 
+BEGIN 
+	SET STR TO TEXT
+	SET N TO NUMBER
+	SET RESULT TO CHARACTERS FROM STR INDEX 0 TO N - 1 
+		+ CHARACTERS FROM STR INDEX N + 1 TO END 
+	DISPLAY RESULT 
+END 
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q11 — Front Back 
+Given a TEXT STR, return a new TEXT where the FIRST and LAST characters have been exchanged. 
+
+Test Cases: 
+frontBack("code") → "eodc" 
+frontBack("a")    → "a" 
+frontBack("ab")   → "ba" 
+
+
+START 
+BEGIN 
+	SET STR TO TEXT 
+	IF LENGTH OF STR LESS THAN OR EQUAL TO 1 THEN 
+		DISPLAY STR 
+	ELSE 
+		SET FIRST TO CHARACTER AT INDEX 0 OF STR 
+		SET LAST TO CHARACTER AT LAST INDEX OF STR 
+		SET RESULT TO LAST + MIDDLE CHARACTERS OF STR + FIRST 
+		DISPLAY RESULT
+	END IF 
+END 
+STOP 
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q12 — Front 3 
+The FRONT of a string is its first 3 characters (or less if the string is shorter). Return a new TEXT made 
+of 3 copies of the front.
+ 
+Test Cases: 
+front3("Java")      
+→ "JavJavJav" 
+front3("Chocolate") → "ChoChoCho" 
+front3("abc")       
+→ "abcabcabc" 
+
+START 
+BEGIN 
+	SET STR TO TEXT 
+	IF LENGTH OF STR GREATER THAN OR EQUAL TO 3 THEN 
+		SET FRONT TO CHARACTERS FROM STR INDEX 0 TO 2 
+	ELSE 
+		SET FRONT TO STR
+	END IF 
+	DISPLAY FRONT + FRONT + FRONT 
+END 
+STOP 
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q13 — Back Around 
+Given a TEXT STR, take the LAST character and return a new TEXT with that character added to the 
+FRONT and BACK. 
+Test Cases: 
+backAround("cat")   → "tcatt" 
+backAround("Hello") → "oHelloo" 
+backAround("a")     → "aaa" 
+
+
+START
+BEGIN
+    SET STR TO TEXT
+    SET LAST TO CHARACTER AT LAST INDEX OF STR
+
+    DISPLAY LAST + STR + LAST
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q14 — Or 35 
+Return TRUE if the given non-negative NUMBER N is a multiple of 3 OR a multiple of 5. Use MOD. 
+
+Test Cases: 
+or35(3)  → TRUE 
+or35(10) → TRUE 
+or35(8)  → FALSE 
+
+
+START
+BEGIN
+    SET N TO NUMBER
+
+    IF N MOD 3 EQUALS 0 OR N MOD 5 EQUALS 0 THEN
+        DISPLAY TRUE
+    ELSE
+        DISPLAY FALSE
+    END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q15 — Front 22 
+Take the first 2 characters of STR (or fewer if shorter) and return the string with those 2 characters 
+added to both the FRONT and BACK. 
+
+Test Cases: 
+front22("kitten") → "kikittenki" 
+front22("Ha")     → "HaHaHa" 
+front22("abc")    → "ababcab" 
+
+START
+BEGIN
+    SET STR TO TEXT
+
+    IF LENGTH OF STR GREATER THAN OR EQUAL TO 2 THEN
+        SET FRONT TO CHARACTERS FROM STR INDEX 0 TO 1
+    ELSE
+        SET FRONT TO STR
+    END IF
+
+    DISPLAY FRONT + STR + FRONT
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q16 — Start Hi 
+Given a TEXT STR, return TRUE if the string starts with "hi", FALSE otherwise. 
+
+Test Cases: 
+startHi("hi there")  → TRUE 
+startHi("hi")        
+→ TRUE 
+startHi("hello hi")  → FALSE
+ 
+START 
+BEGIN 
+	SET STR TO TEXT 
+	IF FIRST 2 CHARACTERS OF STR EQUALS "hi" THEN 
+		DISPLAY TRUE
+	ELSE 
+		DISPLAY FALSE
+	END IF 
+END 
+STOP 
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+
+Q17 — Icy Hot 
+Given two NUMBER temperatures A and B, return TRUE if one is less than 0 AND the other is greater 
+than 100. 
+
+Test Cases: 
+icyHot(120, -1)  → TRUE 
+icyHot(-1, 120)  → TRUE 
+icyHot(2, 120)   → FALSE 
+
+START 
+BEGIN 
+	SET A TO NUMBER 
+	SET B TO NUMBER
+	IF (A IS LESS THAN 0 AND B IS GREATER THAN 100) OR (A IS GREATER THAN 100 AND B IS LESS THAN 0) THEN 
+		DISPLAY TRUE 
+	ELSE 
+		DISPLAY FALSE
+	END IF 
+END 
+STOP 
+
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q18 — In 10 20 
+Given 2 NUMBER values A and B, return TRUE if either of them is in the range 10..20 inclusive. 
+
+Test Cases: 
+in1020(12, 99) → TRUE 
+in1020(21, 12) → TRUE 
+in1020(8, 99)  → FALSE 
+
+START
+BEGIN
+    SET A TO NUMBER
+    SET B TO NUMBER
+
+    IF (A GREATER THAN OR EQUAL TO 10 AND A LESS THAN OR EQUAL TO 20)
+       OR (B GREATER THAN OR EQUAL TO 10 AND B LESS THAN OR EQUAL TO 20) THEN
+        DISPLAY TRUE
+    ELSE
+        DISPLAY FALSE
+    END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q19 — Has Teen 
+A number is "teen" if it is in the range 13..19 inclusive. Given 3 NUMBER values A, B, C, return TRUE 
+if 1 or more of them are teen. 
+
+Test Cases: 
+hasTeen(13, 20, 10) → TRUE 
+hasTeen(20, 19, 10) → TRUE 
+hasTeen(20, 10, 13) → TRUE 
+
+START
+BEGIN
+    SET A TO NUMBER
+    SET B TO NUMBER
+    SET C TO NUMBER
+
+    IF (A GREATER THAN OR EQUAL TO 13 AND A LESS THAN OR EQUAL TO 19)
+       OR (B GREATER THAN OR EQUAL TO 13 AND B LESS THAN OR EQUAL TO 19)
+       OR (C GREATER THAN OR EQUAL TO 13 AND C LESS THAN OR EQUAL TO 19) THEN
+        DISPLAY TRUE
+    ELSE
+        DISPLAY FALSE
+    END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+
+Q20 — Lone Teen 
+A number is "teen" if it is in the range 13..19 inclusive. Given 2 NUMBER values A and B, return TRUE 
+if ONE OR THE OTHER is teen, but NOT BOTH. 
+
+Test Cases: 
+loneTeen(13, 99) → TRUE 
+loneTeen(21, 19) → TRUE 
+loneTeen(13, 13) → FALSE 
+
+START
+BEGIN
+    SET A TO NUMBER
+    SET B TO NUMBER
+
+    SET A_TEEN TO (A GREATER THAN OR EQUAL TO 13 AND A LESS THAN OR EQUAL TO 19)
+    SET B_TEEN TO (B GREATER THAN OR EQUAL TO 13 AND B LESS THAN OR EQUAL TO 19)
+
+    IF (A_TEEN AND NOT B_TEEN) OR (NOT A_TEEN AND B_TEEN) THEN
+        DISPLAY TRUE
+    ELSE
+        DISPLAY FALSE
+    END IF
+END
+STOP
+
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q21 — Del Del 
+Given a TEXT STR, if "del" appears starting at index 1, return the string with that "del" removed. 
+Otherwise return the string unchanged. 
+
+Test Cases: 
+delDel("adelbc")    → "abc" 
+delDel("adelHello") → "aHello" 
+delDel("adedbc")    → "adedbc" 
+
+START
+BEGIN
+    SET STR TO TEXT
+
+    IF CHARACTERS FROM STR INDEX 1 TO 3 EQUALS "del" THEN
+        SET RESULT TO CHARACTER AT INDEX 0 OF STR
+                     + CHARACTERS FROM STR INDEX 4 TO END
+        DISPLAY RESULT
+    ELSE
+        DISPLAY STR
+    END IF
+END
+STOP
+
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+
+Q22 — Mix Start 
+Return TRUE if the given TEXT STR begins with "ix" as its 2nd and 3rd characters — the first 
+character can be anything. 
+
+Test Cases: 
+mixStart("mix snacks") → TRUE 
+mixStart("pix snacks") → TRUE 
+mixStart("piz snacks") → FALSE 
+
+START
+BEGIN
+    SET STR TO (input value)
+
+    IF CHARACTERS FROM STR INDEX 1 TO 2 EQUALS "ix" THEN
+        DISPLAY TRUE
+    ELSE
+        DISPLAY FALSE
+    END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q23 — Start Oz 
+Given a TEXT STR, build a result from the first 2 characters: include the first only if it is 'o', and the 
+second only if it is 'z'. 
+
+Test Cases: 
+startOz("ozymandias") → "oz" 
+startOz("bzoo")       
+→ "z" 
+startOz("oxx")        
+→ "o" 
+
+
+START
+BEGIN
+    SET STR TO TEXT
+    SET RESULT TO ""
+
+    IF CHARACTER AT INDEX 0 OF STR EQUALS "o" THEN
+        SET RESULT TO RESULT + "o"
+    END IF
+
+    IF CHARACTER AT INDEX 1 OF STR EQUALS "z" THEN
+        SET RESULT TO RESULT + "z"
+    END IF
+
+    DISPLAY RESULT
+END
+STOP
+
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q24 — Int Max 
+Given three NUMBER values A, B, C, return the largest. 
+
+Test Cases: 
+intMax(1, 2, 3) → 3 
+intMax(1, 3, 2) → 3 
+intMax(3, 2, 1) → 3 
+
+START
+BEGIN
+    SET A TO NUMBER
+    SET B TO NUMBER
+    SET C TO NUMBER
+
+    IF A GREATER THAN OR EQUAL TO B AND A GREATER THAN OR EQUAL TO C THEN
+        DISPLAY A
+    ELSE IF B GREATER THAN OR EQUAL TO A AND B GREATER THAN OR EQUAL TO C THEN
+        DISPLAY B
+    ELSE
+        DISPLAY C
+    END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q25 — Close 10 
+Given 2 NUMBER values A and B, return whichever is nearest to 10. Return 0 in the event of a tie. 
+
+Test Cases: 
+close10(8, 13)  → 8 
+close10(13, 8)  → 8 
+close10(13, 7)  → 0
+
+START
+BEGIN
+    SET A TO NUMBER
+    SET B TO NUMBER
+
+    SET DIFF_A TO ABSOLUTE VALUE OF (A - 10)
+    SET DIFF_B TO ABSOLUTE VALUE OF (B - 10)
+
+    IF DIFF_A LESS THAN DIFF_B THEN
+        DISPLAY A
+    ELSE IF DIFF_B LESS THAN DIFF_A THEN
+        DISPLAY B
+    ELSE
+        DISPLAY 0
+    END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q26 — In 30 50 
+Given 2 NUMBER values A and B, return TRUE if both are in the range 30..40 inclusive OR both are in 
+the range 40..50 inclusive. 
+
+Test Cases: 
+in3050(30, 31) → TRUE 
+in3050(30, 41) → FALSE 
+in3050(40, 50) → TRUE
+
+ 
+START
+BEGIN
+SET A TO NUMBER
+SET B TO NUMBER
+
+IF (A IS GREATER THAN OR EQUAL TO 30 AND A IS LESS THAN OR EQUAL TO 40
+    AND B IS GREATER THAN OR EQUAL TO 30 AND B IS LESS THAN OR EQUAL TO 40)
+   OR
+   (A IS GREATER THAN OR EQUAL TO 40 AND A IS LESS THAN OR EQUAL TO 50
+    AND B IS GREATER THAN OR EQUAL TO 40 AND B IS LESS THAN OR EQUAL TO 50) THEN
+    DISPLAY TRUE
+ELSE
+    DISPLAY FALSE
+END IF
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q27 — Max 10 20 
+Given 2 positive NUMBER values A and B, return the LARGER value that is in the range 10..20 
+inclusive. Return 0 if neither is in that range. 
+Test Cases: 
+max1020(11, 19) → 19 
+max1020(19, 11) → 19 
+max1020(11, 9)  → 11 
+
+
+START
+BEGIN
+    SET A TO NUMBER
+    SET B TO NUMBER
+
+    SET A_VALID TO (A GREATER THAN OR EQUAL TO 10 AND A LESS THAN OR EQUAL TO 20)
+    SET B_VALID TO (B GREATER THAN OR EQUAL TO 10 AND B LESS THAN OR EQUAL TO 20)
+
+    IF A_VALID AND B_VALID THEN
+        IF A GREATER THAN B THEN
+            DISPLAY A
+        ELSE
+            DISPLAY B
+        END IF
+    ELSE IF A_VALID THEN
+        DISPLAY A
+    ELSE IF B_VALID THEN
+        DISPLAY B
+    ELSE
+        DISPLAY 0
+    END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q28 — String E 
+Given a TEXT STR, return TRUE if it contains between 1 and 3 'e' characters inclusive. 
+
+Test Cases: 
+stringE("Hello")   → TRUE 
+stringE("Heelle")  → TRUE 
+stringE("Heelele") → FALSE 
+
+START
+BEGIN
+    SET STR TO TEXT
+    SET COUNT TO 0
+
+    REPEAT FROM I = 0 TO LENGTH OF STR - 1
+        IF CHARACTER AT INDEX I OF STR EQUALS "e" THEN
+            SET COUNT TO COUNT + 1
+        END IF
+    END REPEAT
+
+    IF COUNT GREATER THAN OR EQUAL TO 1 AND COUNT LESS THAN OR EQUAL TO 3 THEN
+        DISPLAY TRUE
+    ELSE
+        DISPLAY FALSE
+    END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+
+Q29 — Last Digit 
+Given two non-negative NUMBER values A and B, return TRUE if they have the same last digit. Use 
+MOD 10 to get the last digit. 
+
+Test Cases: 
+lastDigit(7, 17)   → TRUE 
+lastDigit(6, 17)   → FALSE 
+lastDigit(3, 113)  → TRUE 
+
+START
+BEGIN
+    SET A TO NUMBER
+    SET B TO NUMBER
+
+    IF A MOD 10 EQUALS B MOD 10 THEN
+        DISPLAY TRUE
+    ELSE
+        DISPLAY FALSE
+    END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q30 — End Up 
+Given a TEXT STR, return a new TEXT where the last 3 characters are converted to UPPERCASE. If 
+the string has fewer than 3 characters, uppercase whatever is there. 
+
+Test Cases: 
+endUp("Hello")    → "HeLLO" 
+endUp("hi there") → "hi thERE" 
+endUp("hi")       
+→ "HI" 
+
+
+START
+BEGIN
+SET STR TO TEXT
+IF LENGTH OF STR LESS THAN 3 THEN
+    DISPLAY UPPERCASE OF STR
+ELSE
+    SET FRONT TO CHARACTERS FROM STR INDEX 0 TO LENGTH OF STR - 3
+    SET BACK  TO CHARACTERS FROM STR INDEX LENGTH OF STR - 3 TO END
+    DISPLAY FRONT + UPPERCASE OF BACK
+END IF
+END
+STOP
+
+
+
+....................................................END...........................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

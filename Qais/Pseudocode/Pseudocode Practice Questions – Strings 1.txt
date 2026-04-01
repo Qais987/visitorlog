@@ -1,0 +1,1158 @@
+Q126 — Hello Name 
+Given a TEXT name, return a greeting in the form "Hello [name]!" 
+Hint: You already know how to join two strings together using +. Think about what pieces 
+make up the final greeting — there is a fixed part ("Hello ") and a changing part (the name) and a 
+fixed ending ("!"). Join them all together in the right order. 
+Test Cases: 
+helloName("Bob")   → "Hello Bob!" 
+helloName("Alice") → "Hello Alice!" 
+helloName("X")     
+→ "Hello X!" 
+
+
+START
+BEGIN
+	SET FUNCTION TO helloName(NAME)
+
+    		RETURN "Hello " + NAME + "!"
+
+	END FUNCTION
+
+	DISPLAY helloName("Bob")
+	DISPLAY helloName("Alice")
+	DISPLAY helloName("X")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,	
+
+Q127 — Make Abba 
+Given two TEXT values A and B, return them joined in the order A + B + B + A. 
+Hint: You are just joining strings together using +. Write out what the answer looks like — 
+"Hi" and "Bye" gives "HiByeByeHi". Count how many times each word appears and in what 
+order. Then use + to build it. 
+Test Cases: 
+makeAbba("Hi", "Bye")     → "HiByeByeHi" 
+makeAbba("Yo", "Alice")   → "YoAliceAliceYo" 
+makeAbba("What", "Up")    → "WhatUpUpWhat" 
+
+START
+BEGIN
+
+	SET FUNCTION TO makeAbba(A, B)
+    		RETURN A + B + B + A
+	END FUNCTION
+
+	DISPLAY makeAbba("Hi", "Bye")
+	DISPLAY makeAbba("Yo", "Alice")
+	DISPLAY makeAbba("What", "Up")
+END
+STOP	
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q128 — Make Tags 
+Given a TEXT tag and a TEXT word, wrap the word in HTML tags of that type. 
+Hint: An HTML tag looks like <i>word</i>. The opening tag is "<" + tag + ">" and the closing 
+tag is "</" + tag + ">". Join the opening tag, the word, and the closing tag together using +. 
+Test Cases: 
+makeTags("i", "Yay")      
+→ "<i>Yay</i>" 
+makeTags("i", "Hello")    → "<i>Hello</i>" 
+makeTags("cite", "Yay")   → "<cite>Yay</cite>" 
+
+
+START
+BEGIN
+
+
+	SET FUNCTION TO makeTags(TAG, WORD)
+
+    		RETURN "<" + TAG + ">" + WORD + "</" + TAG + ">"
+
+	END FUNCTION
+
+	DISPLAY makeTags("i", "Yay")
+	DISPLAY makeTags("i", "Hello")
+	DISPLAY makeTags("cite", "Yay")
+
+END
+STOP		
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q129 — Make Out Word 
+Given a TEXT out of exactly length 4 and a TEXT word, place the word in the middle of 
+out. The first 2 characters of out go at the front, the last 2 go at the back. 
+Hint: The OUT string is always exactly 4 characters. Use STR FROM INDEX A TO B to extract 
+the first 2 characters and the last 2 characters separately. Then join them around the word like: 
+FIRST_PART + WORD + LAST_PART. 
+Test Cases: 
+makeOutWord("<<>>", "Yay")    → "<<Yay>>" 
+makeOutWord("<<>>", "WooHoo") → "<<WooHoo>>" 
+makeOutWord("[[]]", "word")   → "[[word]]"
+
+
+START
+BEGIN
+
+	SET FUNCTION TO makeOutWord(OUT, WORD)
+
+    		SET FIRST_PART = STR FROM INDEX 0 TO 2 OF OUT
+    		SET LAST_PART  = STR FROM INDEX 2 TO 4 OF OUT
+
+    	RETURN FIRST_PART + WORD + LAST_PART
+
+	END FUNCTION
+
+	DISPLAY makeOutWord("<<>>", "Yay")
+	DISPLAY makeOutWord("<<>>", "WooHoo")
+	DISPLAY makeOutWord("[[]]", "word")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q130 — Extra End 
+Given a TEXT STR, take the last 2 characters and return a new TEXT made of 3 copies of 
+those 2 characters. The string length will be at least 2. 
+Hint: First extract the last 2 characters using STR FROM INDEX. To get the last 2 characters 
+of a string, think about what index they are at — it depends on the LENGTH OF the string. Once 
+you have those 2 characters stored in a variable, just add them together 3 times using +. 
+Test Cases: 
+extraEnd("Hello") → "lololo" 
+extraEnd("ab")    → "ababab" 
+extraEnd("Hi")    → "HiHiHi"
+
+START
+BEGIN
+	SET FUNCTION TO extraEnd(STR)
+
+    		SET LAST_TWO = STR FROM INDEX (LENGTH OF STR - 2) TO LENGTH OF STR
+
+    		RETURN LAST_TWO + LAST_TWO + LAST_TWO
+
+	END FUNCTION
+
+	DISPLAY extraEnd("Hello")
+	DISPLAY extraEnd("ab")
+	DISPLAY extraEnd("Hi")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q131 — First Two 
+Given a TEXT STR, return the first 2 characters. If the string is shorter than 2, return 
+whatever is there. 
+Hint: Use LENGTH OF STR to check how long the string is first. If it is less than 2, return the 
+whole string as it is. If it is 2 or more, use STR FROM INDEX 1 TO 2 to extract just the first 2 
+characters. 
+Test Cases: 
+firstTwo("Hello")   → "He" 
+firstTwo("abcdefg") → "ab" 
+firstTwo("ab")      → "ab" 
+
+START
+BEGIN
+
+     SET FUNCTION firstTwo(STR)
+
+    	IF LENGTH OF STR < 2 THEN
+        	RETURN STR
+    	ELSE
+        	RETURN STR FROM INDEX 0 TO 2
+    	END IF
+
+     END FUNCTION
+
+	DISPLAY firstTwo("Hello")
+	DISPLAY firstTwo("abcdefg")
+	DISPLAY firstTwo("ab")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q132 — First Half 
+Given a TEXT STR of even length, return the first half of the string. 
+Hint: If the string has 6 characters, the first half is 3 characters. The midpoint is always 
+LENGTH OF STR / 2. Use STR FROM INDEX 1 TO MIDPOINT to extract the first half. 
+Test Cases: 
+firstHalf("WooHoo")     → "Woo" 
+firstHalf("HelloThere") → "Hello" 
+firstHalf("abcdef")     → "abc"
+
+
+START
+BEGIN
+	STE FUNCTION TO firstHalf(STR)
+
+    		SET MIDPOINT = LENGTH OF STR / 2
+    		RETURN STR FROM INDEX 0 TO MIDPOINT
+
+	END FUNCTION
+	
+	DISPLAY firstHalf("WooHoo")
+	DISPLAY firstHalf("HelloThere")
+	DISPLAY firstHalf("abcdef")
+END
+STOP	
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q133 — Without End 
+Given a TEXT STR, return the string without its first and last characters. The string 
+length will be at least 2. 
+Hint: You want everything except the very first and very last character. Use STR FROM 
+INDEX A TO B — start from index 2 (skipping the first character) and end at LENGTH OF STR - 1 
+(skipping the last character). 
+Test Cases: 
+withoutEnd("Hello")  → "ell" 
+withoutEnd("java")   → "av" 
+withoutEnd("coding") → "odin" 
+
+
+START
+BEGIN
+
+	SET FUNCTION withoutEnd(STR)
+
+    		RETURN STR FROM INDEX 1 TO (LENGTH OF STR - 1)
+
+	END FUNCTION
+
+	DISPLAY withoutEnd("Hello")
+	DISPLAY withoutEnd("java")
+	DISPLAY withoutEnd("coding")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q134 — Combo String 
+Given 2 TEXT values A and B of different lengths, return a string in the form SHORT + 
+LONG + SHORT, where the shorter string wraps around the outside. 
+Hint: First figure out which string is shorter by comparing LENGTH OF A and LENGTH OF B. 
+Store the shorter one in a variable called SHORT and the longer one in LONG. Then join them 
+as SHORT + LONG + SHORT. 
+Test Cases: 
+comboString("Hello", "hi") → "hiHellohi" 
+comboString("hi", "Hello") → "hiHellohi" 
+comboString("aaa", "b")    → "baaab" 
+
+
+START
+BEGIN
+	SET FUNCTION TO comboString(A, B)
+
+    	IF LENGTH OF A LESS THAN LENGTH OF B THEN
+        	SET SHORT EQUAL A
+        	SET LONG EQUAL B
+    	ELSE
+        	SET SHORT EQUAL B
+        	SET LONG EQUAL A
+    	END IF
+
+    	RETURN SHORT + LONG + SHORT
+
+	END FUNCTION
+
+DISPLAY comboString("Hello", "hi")
+DISPLAY comboString("hi", "Hello")
+DISPLAY comboString("aaa", "b")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q135 — Non Start 
+Given 2 TEXT values A and B, return their concatenation but leave out the first character 
+of each. Both strings will be at least length 1. 
+Hint: To remove the first character, extract everything from index 2 onwards using STR 
+FROM INDEX 2 TO LENGTH OF STR. Do this for both strings separately then join the two results 
+together using +. 
+Test Cases: 
+nonStart("Hello", "There") → "ellohere" 
+nonStart("java", "code")   → "avaode" 
+nonStart("shotl", "java")  → "hotlava"
+
+START
+BEGIN
+
+	SET FUNCTION TO nonStart(A, B)
+
+    		SET A_SUB EQUAL TO STR FROM INDEX 1 TO LENGTH OF A
+    		SET B_SUB EQUAL TO STR FROM INDEX 1 TO LENGTH OF B
+
+    	RETURN A_SUB + B_SUB
+
+	END FUNCTION
+
+	DISPLAY nonStart("Hello", "There")
+	DISPLAY nonStart("java", "code")
+	DISPLAY nonStart("shotl", "java")
+
+END
+STOP
+	
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q136 — Left 2 
+Given a TEXT STR, return a version with the first 2 characters moved to the end. The 
+string length will be at least 2. 
+Hint: Split the string into two parts — the first 2 characters and everything after them. Then 
+join them in reverse order: EVERYTHING_AFTER + FIRST_TWO. Use STR FROM INDEX to 
+get each part. 
+Test Cases: 
+left2("Hello") → "lloHe" 
+left2("java")  → "vaja" 
+left2("Hi")    → "Hi" 
+
+
+START
+BEGIN
+	SET FUNCTION TO left2(STR)
+
+   		SET FIRST_TWO EQUAL TO STR FROM INDEX 0 TO 2
+    		SET REST      EQUAL TO STR FROM INDEX 2 TO LENGTH OF STR
+
+    	RETURN REST + FIRST_TWO
+
+	END FUNCTION
+
+	DISPLAY left2("Hello")
+	DISPLAY left2("java")
+	DISPLAY left2("Hi")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q137 — Right 2 
+Given a TEXT STR, return a version with the last 2 characters moved to the front. The 
+string length will be at least 2. 
+Hint: This is the opposite of Left 2. Split into the last 2 characters and everything before 
+them. The last 2 characters start at index LENGTH OF STR - 1. Join them as LAST_TWO + 
+EVERYTHING_BEFORE. 
+Test Cases: 
+right2("Hello") → "loHel" 
+right2("java")  → "vaja" 
+right2("Hi")    
+→ "Hi" 
+
+START
+BEGIN
+
+	SET FUNCTION TO right2(STR)
+
+    		SET LAST_TWO EQUAL TO STR FROM INDEX (LENGTH OF STR - 2) TO LENGTH OF STR
+    		SET REST     EQUAL TO STR FROM INDEX 0 TO (LENGTH OF STR - 2)
+
+    		RETURN LAST_TWO + REST
+
+	END FUNCTION
+
+	DISPLAY right2("Hello")
+	DISPLAY right2("java")
+	DISPLAY right2("Hi")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q138 — The End 
+Given a TEXT STR and a BOOLEAN FRONT, return 1 character from the front if 
+FRONT is TRUE, or 1 character from the back if FRONT is FALSE. 
+Hint: Use an IF condition to check the value of FRONT. If TRUE, use CHARACTER AT STR 
+INDEX 1 to get the first character. If FALSE, use CHARACTER AT STR INDEX LENGTH OF STR to 
+get the last character. 
+Test Cases: 
+theEnd("Hello", TRUE)  → "H" 
+theEnd("Hello", FALSE) → "o" 
+theEnd("oh", TRUE)     → "o" 
+
+
+START
+BEGIN
+	SET FUNCTION TO theEnd(STR, FRONT)
+
+    		IF FRONT IS TRUE THEN
+        		RETURN CHARACTER AT STR INDEX 0
+    		ELSE
+        		RETURN CHARACTER AT STR INDEX (LENGTH OF STR - 1)
+   		END IF
+
+	END FUNCTION
+
+	DISPLAY theEnd("Hello", TRUE)
+	DISPLAY theEnd("Hello", FALSE)
+	DISPLAY theEnd("oh", TRUE)
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q139 — Without End 2 
+Given a TEXT STR of any length including 0, return the string without both its first and 
+last characters. 
+Hint: This is similar to Without End but you need to handle short strings carefully. If the 
+string is length 0 or 1, there is nothing left after removing both ends — return "". If length 2, 
+both characters get removed — also return "". Only if length is 3 or more do you extract the 
+middle part. 
+Test Cases: 
+withoutEnd2("Hello") → "ell" 
+withoutEnd2("abc")   → "b" 
+withoutEnd2("ab")    → "" 
+
+
+START
+BEGIN
+
+	SET FUNCTION TO withoutEnd2(STR)
+
+	    IF LENGTH OF STR LESS THAN OR EQUAL 2 THEN
+	        RETURN ""
+	    ELSE
+	        RETURN STR FROM INDEX 1 TO (LENGTH OF STR - 1)
+	    END IF
+
+	END FUNCTION
+
+	DISPLAY withoutEnd2("Hello")	
+	DISPLAY withoutEnd2("abc")
+	DISPLAY withoutEnd2("ab")
+	DISPLAY withoutEnd2("a")
+	DISPLAY withoutEnd2("")
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q140 — Middle Two 
+Given a TEXT STR of even length (at least 2), return the 2 middle characters. 
+Hint: The middle starts at position LENGTH OF STR / 2. For "code" with length 4, the middle 
+starts at position 2. Use STR FROM INDEX MID TO MID + 1 to get the 2 middle characters. 
+Test Cases: 
+middleTwo("string")   → "ri" 
+middleTwo("code")     → "od" 
+middleTwo("Practice") → "ct" 
+
+START
+BEGIN
+
+	SET FUNCTION TO middleTwo(STR)
+
+	    SET MID = LENGTH OF STR / 2
+	    RETURN STR FROM INDEX (MID - 1) TO (MID + 1)
+
+	END FUNCTION
+
+	DISPLAY middleTwo("string")
+	DISPLAY middleTwo("code")
+	DISPLAY middleTwo("Practice")
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q141 — Ends Ly 
+Given a TEXT STR, return TRUE if it ends with the characters "ly", otherwise return 
+FALSE. 
+Hint: You have a string term for exactly this — STR ENDS WITH "ly". Use it inside an IF 
+condition and DISPLAY TRUE or FALSE based on the result. 
+Test Cases: 
+endsLy("oddly") → TRUE 
+endsLy("y")     → FALSE 
+endsLy("oddy")  → FALSE 
+
+START
+BEGIN
+
+	SET FUNCTION TO endsLy(STR)
+
+	    IF STR ENDS WITH "ly" THEN
+	        RETURN TRUE
+	    ELSE
+	        RETURN FALSE
+	    END IF
+
+	END FUNCTION
+
+	DISPLAY endsLy("oddly")
+	DISPLAY endsLy("y")
+	DISPLAY endsLy("oddy")
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q142 — N Twice 
+Given a TEXT STR and a NUMBER N, return a new TEXT made of the first N characters 
+followed by the last N characters. 
+Hint: You need two extractions. The first N characters are at STR FROM INDEX 1 TO N. The 
+last N characters start at LENGTH OF STR - N + 1 and go to the end. Store each part in a variable 
+then join them with +. 
+Test Cases: 
+nTwice("Hello", 2)     → "Helo" 
+nTwice("Chocolate", 3) → "Choate" 
+nTwice("Chocolate", 1) → "Ce" 
+
+
+START
+BEGIN
+
+	SET FUNCTION TO twoChar(STR, INDEX)
+
+	    IF INDEX LESS THAN 0 OR INDEX PLUS 1 GREATER THAN OR EQUAL TO LENGTH OF STR THEN
+	        RETURN STR FROM INDEX 0 TO 2
+	    ELSE
+	        RETURN STR FROM INDEX INDEX TO INDEX PLUS 2
+	    END IF
+
+	END FUNCTION
+
+	DISPLAY twoChar("java", 0)
+	DISPLAY twoChar("java", 2)
+	DISPLAY twoChar("java", 3)
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q144 — Middle Three 
+Given a TEXT STR of odd length (at least 3), return the 3 middle characters. 
+Hint: For an odd-length string the middle position is always LENGTH OF STR / 2 (rounded 
+down) + 1 using 1-based indexing. For "Candy" with length 5, the middle is at position 3. Extract 
+3 characters starting one before the middle using STR FROM INDEX. 
+Test Cases: 
+middleThree("Candy")   → "and" 
+middleThree("and")     → "and" 
+middleThree("solving") → "lvi" 
+
+
+START
+BEGIN
+
+	SET FUNCTION TO middleThree(STR)
+
+	    SET MID = LENGTH OF STR DIVIDED BY 2
+
+	    RETURN STR FROM INDEX MID MINUS 1 TO MID PLUS 2
+
+	END FUNCTION
+
+	DISPLAY middleThree("Candy")
+	DISPLAY middleThree("and")
+	DISPLAY middleThree("solving")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q145 — Has Bad 
+Given a TEXT STR, return TRUE if the word "bad" appears starting at index 1 or index 
+2. The string may be any length including 0. 
+Hint: You need to check two specific positions only — not the whole string. Use STR FROM 
+INDEX 1 TO 3 to check the first position and STR FROM INDEX 2 TO 4 to check the second position. 
+Make sure the string is long enough before checking each one using LENGTH OF STR. 
+Test Cases: 
+hasBad("badxx")   → TRUE 
+hasBad("xbadxx")  → TRUE 
+hasBad("xxbadxx") → FALSE 
+
+START
+BEGIN
+
+FUNCTION hasBad(STR)
+
+    IF LENGTH OF STR GREATER THAN OR EQUAL TO 3 THEN
+        IF STR FROM INDEX 0 TO 3 EQUALS "bad" THEN
+            RETURN TRUE
+        ELSE IF LENGTH OF STR GREATER THAN OR EQUAL TO 4 AND STR FROM INDEX 1 TO 4 EQUALS "bad" THEN
+            RETURN TRUE
+        ELSE
+            RETURN FALSE
+        END IF
+    ELSE
+        RETURN FALSE
+    END IF
+
+END FUNCTION
+
+DISPLAY hasBad("badxx")
+DISPLAY hasBad("xbadxx")
+DISPLAY hasBad("xxbadxx")
+DISPLAY hasBad("ba")
+DISPLAY hasBad("")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q146 — At First 
+Given a TEXT STR, return the first 2 characters. If the string has fewer than 2 characters, 
+use "@" in place of any missing character. 
+Hint: Check the length first. If length is 0 return "@@". If length is 1 return the one 
+character + "@". If length is 2 or more return the first 2 characters normally using STR FROM 
+INDEX 1 TO 2. 
+Test Cases: 
+atFirst("hello") → "he" 
+atFirst("hi")    → "hi" 
+atFirst("h")     → "h@" 
+
+
+START
+BEGIN
+
+	SET FUNCTION TO atFirst(STR)
+
+	    IF LENGTH OF STR EQUALS 0 THEN
+	        RETURN "@@"
+	    ELSE IF LENGTH OF STR EQUALS 1 THEN
+	        RETURN STR FROM INDEX 0 TO 1 + "@"
+	    ELSE
+	        RETURN STR FROM INDEX 0 TO 2
+	    END IF
+
+	END FUNCTION
+
+	DISPLAY atFirst("hello")
+	DISPLAY atFirst("hi")
+	DISPLAY atFirst("h")
+	DISPLAY atFirst("")
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q147 — Last Chars 
+Given 2 TEXT values A and B, return a new TEXT made of the first character of A and 
+the last character of B. If either string is empty use "@" for that missing character. 
+Hint: Check the length of each string separately using IF. For A — if empty use "@", 
+otherwise use CHARACTER AT A INDEX 1. For B — if empty use "@", otherwise use CHARACTER 
+AT B INDEX LENGTH OF B. Then join the two characters with +. 
+Test Cases: 
+lastChars("last", "chars") → "ls" 
+lastChars("yo", "java")    → "ya" 
+lastChars("hi", "")        → "h@"
+
+
+START
+BEGIN
+
+	SET FUNCTION TO lastChars(A, B)
+
+	    IF LENGTH OF A EQUALS 0 THEN
+	        SET CHAR_A = "@"
+	    ELSE
+	        SET CHAR_A = CHARACTER AT A INDEX 0
+	    END IF
+
+	    IF LENGTH OF B EQUALS 0 THEN
+	        SET CHAR_B = "@"
+	    ELSE
+	        SET CHAR_B = CHARACTER AT B INDEX (LENGTH OF B MINUS 1)
+	    END IF
+
+	    RETURN CHAR_A + CHAR_B
+
+	END FUNCTION
+
+	DISPLAY lastChars("last", "chars")
+	DISPLAY lastChars("yo", "java")
+	DISPLAY lastChars("hi", "")
+	DISPLAY lastChars("", "b")
+	DISPLAY lastChars("", "")
+
+END
+STOP 
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q148 — Con Cat 
+Given 2 TEXT values A and B, concatenate them. However if the last character of A is the 
+same as the first character of B, omit one of those duplicate characters. 
+Hint: First check if B is empty — if so just return A. Otherwise compare CHARACTER AT A 
+INDEX LENGTH OF A with CHARACTER AT B INDEX 1. If they are equal, join A with everything 
+from B except its first character. If not equal, join them normally. 
+Test Cases: 
+conCat("abc", "cat") → "abcat" 
+conCat("dog", "cat") → "dogcat" 
+conCat("abc", "")    → "abc" 
+
+START
+BEGIN
+
+	SET FUNCTION TO conCat(A, B)
+
+	    IF LENGTH OF B EQUALS 0 THEN
+	        RETURN A
+	    ELSE IF LENGTH OF A GREATER THAN 0 AND CHARACTER AT A INDEX (LENGTH OF A MINUS 1) EQUALS CHARACTER AT B 		INDEX 0 THEN
+	        RETURN A + STR FROM INDEX 1 TO LENGTH OF B OF B
+	    ELSE
+	        RETURN A + B
+	    END IF
+
+	END FUNCTION
+
+	DISPLAY conCat("abc", "cat")
+	DISPLAY conCat("dog", "cat")
+	DISPLAY conCat("abc", "")
+	DISPLAY conCat("a", "apple")
+	DISPLAY conCat("", "bat")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q149 — Last Two 
+Given a TEXT STR, return a new TEXT where the last 2 characters are swapped. 
+Hint: Get everything except the last 2 characters using STR FROM INDEX 1 TO LENGTH OF 
+STR - 2. Then get the second-to-last character and the last character separately and add them in 
+swapped order. Join all three parts together. 
+Test Cases: 
+lastTwo("coding") → "codign" 
+lastTwo("cat")    → "cta" 
+lastTwo("ab")     → "ba" 
+
+START
+BEGIN
+
+    SET FUNCTION TO lastTwo(STR)
+
+        IF LENGTH OF STR LESS THAN 2 THEN
+            RETURN STR
+        ELSE
+            SET MAIN_PART TO STR FROM INDEX 0 TO LENGTH OF STR - 2
+            SET SECOND_LAST TO CHARACTER AT INDEX LENGTH OF STR - 2
+            SET LAST TO CHARACTER AT INDEX LENGTH OF STR - 1
+            RETURN MAIN_PART + LAST + SECOND_LAST
+        END IF
+
+    END FUNCTION
+
+    DISPLAY lastTwo("coding")
+    DISPLAY lastTwo("cat")
+    DISPLAY lastTwo("ab")
+    DISPLAY lastTwo("a")
+    DISPLAY lastTwo("xyz")
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q150 — See Color 
+Given a TEXT STR, return "red" if it starts with "red", "blue" if it starts with "blue", 
+otherwise return an empty TEXT "". 
+Hint: Use STR STARTS WITH which you already know. Check for "red" first, then check for 
+"blue". If neither is true, display an empty string "". The order of your checks matters — check 
+the longer one first to be safe. 
+Test Cases: 
+seeColor("redxx")     
+seeColor("xxred")     
+→ "red" 
+→ "" 
+seeColor("blueTimes") → "blue"
+
+START
+BEGIN
+
+    SET FUNCTION TO seeColor(STR)
+
+        IF STR STARTS WITH "red" THEN
+            RETURN "red"
+        ELSE IF STR STARTS WITH "blue" THEN
+            RETURN "blue"
+        ELSE
+            RETURN ""
+        END IF
+
+    END FUNCTION
+
+    DISPLAY seeColor("redxx")
+    DISPLAY seeColor("xxred")
+    DISPLAY seeColor("blueTimes")
+    DISPLAY seeColor("bluered")
+    DISPLAY seeColor("green")
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q151 — Front Again 
+Given a TEXT STR, return TRUE if the first 2 characters also appear at the very end of 
+the string. 
+Hint: Extract the first 2 characters using STR FROM INDEX 1 TO 2 and store them in a 
+variable. Then extract the last 2 characters using STR FROM INDEX LENGTH OF STR - 1 TO LENGTH 
+OF STR. Compare the two using EQUALS. 
+Test Cases: 
+frontAgain("edited") → TRUE 
+frontAgain("edit")   → FALSE 
+frontAgain("ed")     → TRUE 
+
+START
+BEGIN
+
+    SET FUNCTION TO frontAgain(STR)
+
+        IF LENGTH OF STR LESS THAN 2 THEN
+            RETURN TRUE
+        ELSE
+            SET FIRST_TWO TO STR FROM INDEX 0 TO 2
+            SET LAST_TWO TO STR FROM INDEX LENGTH OF STR - 2 TO LENGTH OF STR
+            IF FIRST_TWO EQUALS LAST_TWO THEN
+                RETURN TRUE
+            ELSE
+                RETURN FALSE
+            END IF
+        END IF
+
+    END FUNCTION
+
+    DISPLAY frontAgain("edited")
+    DISPLAY frontAgain("edit")
+    DISPLAY frontAgain("ed")
+    DISPLAY frontAgain("e")
+    DISPLAY frontAgain("ababa")
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q152 — Min Cat 
+Given 2 TEXT values A and B, trim the longer string from the front so both are the same 
+length, then concatenate them. 
+Hint: First compare LENGTH OF A and LENGTH OF B. If A is longer, trim it from the front so 
+it matches B's length — use A FROM INDEX LENGTH OF A - LENGTH OF B + 1 TO LENGTH OF A. If 
+B is longer, do the same for B. Then join the trimmed versions together. 
+Test Cases: 
+minCat("Hello", "Hi")   → "loHi" 
+minCat("Hello", "java") → "ellojava" 
+minCat("java", "Hello") → "javaello" 
+
+START
+BEGIN
+
+    SET FUNCTION TO minCat(A, B)
+
+        IF LENGTH OF A GREATER THAN LENGTH OF B THEN
+            SET A TO A FROM INDEX LENGTH OF A - LENGTH OF B TO LENGTH OF A
+        ELSE IF LENGTH OF B GREATER THAN LENGTH OF A THEN
+            SET B TO B FROM INDEX LENGTH OF B - LENGTH OF A TO LENGTH OF B
+        END IF
+
+        RETURN A + B
+
+    END FUNCTION
+
+    DISPLAY minCat("Hello", "Hi")
+    DISPLAY minCat("Hello", "java")
+    DISPLAY minCat("java", "Hello")
+    DISPLAY minCat("abc", "xyz")
+    DISPLAY minCat("longstring", "short")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q153 — Extra Front 
+Given a TEXT STR, return a new TEXT made of 3 copies of the first 2 characters. If the 
+string has fewer than 2 characters use whatever is there. 
+Hint: First check the length. If less than 2, set your FRONT variable to the whole string. If 2 
+or more, set FRONT to STR FROM INDEX 1 TO 2. Then join FRONT + FRONT + FRONT. 
+Test Cases: 
+extraFront("Hello") → "HeHeHe" 
+extraFront("ab")    → "ababab" 
+extraFront("H")     → "HHH" 
+
+START
+BEGIN
+
+    SET FUNCTION TO extraFront(STR)
+
+        IF LENGTH OF STR LESS THAN 2 THEN
+            SET FRONT TO STR
+        ELSE
+            SET FRONT TO STR FROM INDEX 0 TO 2
+        END IF
+
+        RETURN FRONT + FRONT + FRONT
+
+    END FUNCTION
+
+    DISPLAY extraFront("Hello")
+    DISPLAY extraFront("ab")
+    DISPLAY extraFront("H")
+    DISPLAY extraFront("")
+    DISPLAY extraFront("xyz")
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q154 — Without 2 
+Given a TEXT STR, if the first 2 characters also appear at the end, return the string 
+without those first 2 characters. If the string is exactly length 2, return "". Otherwise 
+return the string unchanged. 
+Hint: First handle the special case where length is less than 2 — return the string unchanged. 
+Then check if STR FROM INDEX 1 TO 2 equals STR FROM INDEX LENGTH OF STR - 1 TO LENGTH OF 
+STR. If they match, return STR FROM INDEX 3 TO LENGTH OF STR. If not, return STR unchanged. 
+Test Cases: 
+without2("HelloHe") → "lloHe" 
+without2("HelloHi") → "HelloHi" 
+without2("Hi")      → ""
+
+START
+BEGIN
+
+    SET FUNCTION TO without2(STR)
+
+        IF LENGTH OF STR LESS THAN 2 THEN
+            RETURN STR
+        ELSE IF LENGTH OF STR EQUALS 2 THEN
+            RETURN ""
+        ELSE
+            SET FIRST_TWO TO STR FROM INDEX 0 TO 2
+            SET LAST_TWO TO STR FROM INDEX LENGTH OF STR - 2 TO LENGTH OF STR
+
+            IF FIRST_TWO EQUALS LAST_TWO THEN
+                RETURN STR FROM INDEX 2 TO LENGTH OF STR
+            ELSE
+                RETURN STR
+            END IF
+        END IF
+
+    END FUNCTION
+
+    DISPLAY without2("HelloHe")
+    DISPLAY without2("HelloHi")
+    DISPLAY without2("Hi")
+    DISPLAY without2("H")
+    DISPLAY without2("abcab")
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q155 — De Front 
+Given a TEXT STR, remove the first 2 characters. But keep the first character if it is "a", 
+and keep the second character if it is "b". 
+Hint: Check each of the first 2 characters individually. Start with an empty RESULT. If 
+CHARACTER AT STR INDEX 1 equals "a", add it to RESULT. If CHARACTER AT STR INDEX 2 
+equals "b", add it to RESULT. Then always add everything from index 3 onwards. Join them all 
+together. 
+Test Cases: 
+deFront("Hello") → "llo" 
+deFront("java")  → "va" 
+deFront("away")  → "aay" 
+
+START
+BEGIN
+
+    SET FUNCTION TO deFront(STR)
+
+        SET RESULT TO ""
+
+        IF LENGTH OF STR GREATER THAN 0 AND CHARACTER AT STR INDEX 0 EQUALS "a" THEN
+            RESULT = RESULT + "a"
+        END IF
+
+        IF LENGTH OF STR GREATER THAN 1 AND CHARACTER AT STR INDEX 1 EQUALS "b" THEN
+            RESULT = RESULT + "b"
+        END IF
+
+        IF LENGTH OF STR GREATER THAN 2 THEN
+            RESULT = RESULT + STR FROM INDEX 2 TO LENGTH OF STR
+        END IF
+
+        RETURN RESULT
+
+    END FUNCTION
+
+    DISPLAY deFront("Hello")
+    DISPLAY deFront("java")
+    DISPLAY deFront("away")
+    DISPLAY deFront("abacus")
+    DISPLAY deFront("baba")
+    DISPLAY deFront("a")
+    DISPLAY deFront("b")
+
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q156 — Start Word 
+Given a TEXT STR and a TEXT WORD, if the characters of WORD from position 2 
+onwards match the same positions in STR, return the front of STR with the same length as 
+WORD. Return "" if there is no match. 
+Hint: You only need to check from the second character of WORD onwards. Extract WORD 
+FROM INDEX 2 TO LENGTH OF WORD and check if STR FROM INDEX 2 TO LENGTH OF WORD 
+equals it. If they match, return STR FROM INDEX 1 TO LENGTH OF WORD. The first character of 
+WORD is intentionally ignored. 
+Test Cases: 
+startWord("hippo", "hi")  → "hi" 
+startWord("hippo", "xip") → "hip" 
+startWord("hippo", "i")   → "h" 
+
+START
+BEGIN
+
+    SET FUNCTION TO startWord(STR, WORD)
+
+        IF LENGTH OF WORD EQUALS 0 THEN
+            RETURN ""
+        END IF
+
+        IF LENGTH OF WORD EQUALS 1 THEN
+            RETURN STR FROM INDEX 0 TO 1
+        END IF
+
+        SET REST_WORD TO WORD FROM INDEX 1 TO LENGTH OF WORD
+        SET REST_STR TO STR FROM INDEX 1 TO LENGTH OF WORD
+
+        IF REST_WORD EQUALS REST_STR THEN
+            RETURN STR FROM INDEX 0 TO LENGTH OF WORD
+        ELSE
+            RETURN ""
+        END IF
+
+    END FUNCTION
+
+    DISPLAY startWord("hippo", "hi")
+    DISPLAY startWord("hippo", "xip")
+    DISPLAY startWord("hippo", "i")
+    DISPLAY startWord("hippo", "hippo")
+    DISPLAY startWord("hippo", "hip")
+    DISPLAY startWord("hippo", "h")
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q157 — Without X 
+Given a TEXT STR, remove the first character if it is "x" and remove the last character if 
+it is "x". Otherwise return the string unchanged. 
+Hint: Handle the two ends separately. First check if CHARACTER AT STR INDEX 1 equals "x" 
+— if so, trim it. Then check if CHARACTER AT STR INDEX LENGTH OF STR equals "x" — if so, 
+trim it. You can build the result step by step by updating your string after each check. 
+Test Cases: 
+withoutX("xHix") → "Hi" 
+withoutX("xHi")  → "Hi" 
+withoutX("Hxix") → "Hxi" 
+
+START
+BEGIN
+
+    SET FUNCTION TO withoutX(STR)
+
+        IF LENGTH OF STR GREATER THAN 0 AND CHARACTER AT STR INDEX 0 EQUALS "x" THEN
+            STR = STR FROM INDEX 1 TO LENGTH OF STR
+        END IF
+
+        IF LENGTH OF STR GREATER THAN 0 AND CHARACTER AT STR INDEX LENGTH OF STR - 1 EQUALS "x" THEN
+            STR = STR FROM INDEX 0 TO LENGTH OF STR - 1
+        END IF
+
+        RETURN STR
+
+    END FUNCTION
+
+    DISPLAY withoutX("xHix")
+    DISPLAY withoutX("xHi")
+    DISPLAY withoutX("Hxix")
+    DISPLAY withoutX("Hi")
+    DISPLAY withoutX("x")
+    DISPLAY withoutX("xx")
+
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q158 — Without X2 
+Given a TEXT STR, if either or both of the first 2 characters is "x", remove only those "x" 
+characters from the front. All other characters stay unchanged. 
+Hint: Check the first and second characters one at a time. Start with an empty RESULT. If 
+CHARACTER AT STR INDEX 1 is NOT "x", add it to RESULT. If CHARACTER AT STR INDEX 2 is 
+NOT "x", add it to RESULT. Then always add everything from index 3 onwards. Join them all. 
+Test Cases: 
+withoutX2("xHi") → "Hi" 
+withoutX2("Hxi") → "Hi" 
+withoutX2("Hi")  → "Hi" 
+
+
+START
+BEGIN
+
+    SET FUNCTION TO withoutX2(STR)
+
+        SET RESULT TO ""
+
+        IF LENGTH OF STR GREATER THAN 0 AND CHARACTER AT STR INDEX 0 NOT EQUALS "x" THEN
+            RESULT = RESULT + CHARACTER AT STR INDEX 0
+        END IF
+
+        IF LENGTH OF STR GREATER THAN 1 AND CHARACTER AT STR INDEX 1 NOT EQUALS "x" THEN
+            RESULT = RESULT + CHARACTER AT STR INDEX 1
+        END IF
+
+        IF LENGTH OF STR GREATER THAN 2 THEN
+            RESULT = RESULT + STR FROM INDEX 2 TO LENGTH OF STR
+        END IF
+
+        RETURN RESULT
+
+    END FUNCTION
+
+    DISPLAY withoutX2("xHi")
+    DISPLAY withoutX2("Hxi")
+    DISPLAY withoutX2("Hi")
+    DISPLAY withoutX2("xxabc")
+    DISPLAY withoutX2("x")
+    DISPLAY withoutX2("")
+
+END
+STOP
+
+........................................................END........................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

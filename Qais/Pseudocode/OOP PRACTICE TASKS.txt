@@ -1,0 +1,470 @@
+OOP PRACTICE TASKS
+Topics: CLASS, OBJECT, ATTRIBUTES, METHODS + Conditions, Loops, Lists
+*********************************************************
+
+TASK 1 — Student Grade Checker
+---------------------------------------------------------
+Create a Student class with a name and a score.
+Add a method called CHECK_GRADE() that displays:
+   "Pass" if score >= 50
+   "Fail" if score is less than 50
+
+Create 1 student object, set their name and score, then call CHECK_GRADE().
+
+Expected Output (example):
+   Sara - Pass
+
+CLASS Student
+    name : TEXT
+    score : NUUMBER
+
+    METHOD CHECK_GRADE()
+        IF score GREATER THAN OR EQUAL 50 THEN
+            DISPLAY name + " - Pass"
+        ELSE
+            DISPLAY name + " - Fail"
+        ENDIF
+    END METHOD
+END CLASS
+
+CREATE student1 AS Student
+student1.name ← "Sara"
+student1.score ← 75
+
+CALL student1.CHECK_GRADE()
+
+
+
+*********************************************************
+
+TASK 2 — Temperature Converter
+---------------------------------------------------------
+Create a Converter class with one attribute: celsius.
+Add a method called TO_FAHRENHEIT() that converts and displays the result.
+
+Formula: fahrenheit = (celsius * 9 / 5) + 32
+
+Create 1 object, set celsius to 100, call TO_FAHRENHEIT().
+
+Expected Output:
+   212
+
+
+
+CLASS Converter
+    celsius
+
+    METHOD TO_FAHRENHEIT()
+        fahrenheit  (celsius * 9 / 5) + 32
+        DISPLAY fahrenheit
+    END METHOD
+END CLASS
+
+CREATE temp AS Converter
+temp.celsius  100
+
+CALL temp.TO_FAHRENHEIT()
+
+*********************************************************
+
+TASK 3 — Bank Account
+---------------------------------------------------------
+Create a BankAccount class with:
+   ATTRIBUTES: owner (TEXT), balance (NUMBER)
+   METHODS:
+      DEPOSIT(amount)   – adds to balance, displays new balance
+      WITHDRAW(amount)  – if amount > balance display "Insufficient funds"
+                          otherwise subtract and display new balance
+
+Create 1 account object.
+Deposit 300, then try to withdraw 500, then withdraw 100.
+
+Expected Output:
+   Balance: 300
+   Insufficient funds
+   Balance: 200
+
+CLASS BankAccount
+    owner : TEXT
+    balance : NUMBER
+
+    METHOD DEPOSIT(amount)
+        balance  balance + amount
+        DISPLAY "Balance: " + balance
+    END METHOD
+
+    METHOD WITHDRAW(amount)
+        IF amount GREATER THAN balance THEN
+            DISPLAY "Insufficient funds"
+        ELSE
+            balance ← balance - amount
+            DISPLAY "Balance: " + balance
+        ENDIF
+    END METHOD
+END CLASS
+
+CREATE acc AS BankAccount
+acc.owner ← "Ali"
+acc.balance ← 0
+
+CALL acc.DEPOSIT(300)
+CALL acc.WITHDRAW(500)
+CALL acc.WITHDRAW(100)
+
+*********************************************************
+TASK 4 — Counting Up with a Car
+---------------------------------------------------------
+Create a Car class with:
+   ATTRIBUTES: brand (TEXT), speed (NUMBER)
+   METHODS:
+      ACCELERATE(amount) – adds amount to speed, displays speed
+
+Create 1 car object.
+Use a loop to call ACCELERATE(10) five times.
+
+Expected Output:
+   Speed is now: 10
+   Speed is now: 20
+   Speed is now: 30
+   Speed is now: 40
+   Speed is now: 50
+
+
+
+CLASS Car
+    brand : TEXT
+    speed : NUMBER
+
+    METHOD ACCELERATE(amount)
+        speed  speed + amount
+        DISPLAY "Speed is now: " + speed
+    END METHOD
+END CLASS
+
+CREATE car1 AS Car
+car1.brand  "Toyota"
+car1.speed  0
+
+FOR i  1 TO 5
+    CALL car1.ACCELERATE(10)
+END FOR
+
+*********************************************************
+
+TASK 5 — Product Shop
+---------------------------------------------------------
+Create a Product class with:
+   ATTRIBUTES: name (TEXT), price (NUMBER), stock (NUMBER)
+   METHODS:
+      BUY() – if stock > 0, reduce stock by 1 and display "Purchased: " + name
+               if stock = 0, display "Out of stock"
+
+Create 1 product with stock = 2.
+Call BUY() three times.
+
+Expected Output:
+   Purchased: Notebook
+   Purchased: Notebook
+   Out of stock
+
+CLASS Product
+    name : TEXT
+    price : NUMBER
+    stock : NUMBER
+
+    METHOD BUY()
+        IF stock GREATER THAN 0 THEN
+            stock EQYAL TO stock - 1
+            DISPLAY "Purchased: " + name
+        ELSE
+            DISPLAY "Out of stock"
+        ENDIF
+    END METHOD
+END CLASS
+
+CREATE product1 AS Product
+product1.name "Notebook"
+product1.price 2
+product1.stock 2
+
+CALL product1.BUY()
+CALL product1.BUY()
+CALL product1.BUY()
+
+*********************************************************
+TASK 6 — Classroom Average
+---------------------------------------------------------
+Create a Classroom class with:
+   ATTRIBUTES: className (TEXT), marks (LIST)
+   METHODS:
+      ADD_MARK(mark)    – adds a mark to the marks list
+      SHOW_AVERAGE()    – loops through all marks, calculates and displays the average
+
+Create 1 classroom object.
+Add marks: 80, 90, 70, 60.
+Call SHOW_AVERAGE().
+
+Expected Output:
+   Average for Math: 75
+
+
+
+CLASS Classroom
+    className : TEXT
+    marks  : NUMBER
+
+    METHOD ADD_MARK(mark)
+        ADD mark TO marks
+    END METHOD
+
+    METHOD SHOW_AVERAGE()
+        total  0
+
+        FOR each mark IN marks
+            total EQUAL TO total + mark
+        END FOR
+
+        average EQUAL TO total / SIZE(marks)
+
+        DISPLAY "Average for " + className + ": " + average
+    END METHOD
+END CLASS
+
+CREATE class1 AS Classroom
+class1.className ← "Math"
+
+CALL class1.ADD_MARK(80)
+CALL class1.ADD_MARK(90)
+CALL class1.ADD_MARK(70)
+CALL class1.ADD_MARK(60)
+
+CALL class1.SHOW_AVERAGE()
+
+*********************************************************
+
+TASK 7 — Login System
+---------------------------------------------------------
+Create a User class with:
+   ATTRIBUTES: username (TEXT), password (TEXT)
+   METHODS:
+      LOGIN(enteredPassword) – if enteredPassword equals password
+                                  display "Welcome " + username
+                               else
+                                  display "Wrong password"
+
+Create 2 user objects.
+Try logging in — one with the correct password, one with a wrong password.
+
+Expected Output:
+   Welcome Sara
+   Wrong password
+
+
+CLASS User
+    username : TEXT
+    password : TEXT
+
+    METHOD LOGIN(enteredPassword)
+        IF enteredPassword = password THEN
+            DISPLAY "Welcome " + username
+        ELSE
+            DISPLAY "Wrong password"
+        ENDIF
+    END METHOD
+END CLASS
+
+CREATE user1 AS User
+user1.username  "Sara"
+user1.password  "1234"
+
+CREATE user2 AS User
+user2.username  "Ali"
+user2.password  "abcd"
+
+CALL user1.LOGIN("1234")
+CALL user2.LOGIN("1111")
+
+*********************************************************
+TASK 8 — Gym Membership
+---------------------------------------------------------
+Create a Member class with:
+   ATTRIBUTES: name (TEXT), sessions (NUMBER)
+   METHODS:
+      ATTEND() – adds 1 to sessions, displays updated session count
+      CHECK_REWARD() – if sessions >= 10 display "Free session earned!"
+                        otherwise display "Keep going: " + sessions + " sessions"
+
+Create 1 member object.
+Use a loop to call ATTEND() 10 times.
+Then call CHECK_REWARD().
+
+Expected Output (last few lines):
+   Sessions attended: 9
+   Sessions attended: 10
+   Free session earned!
+
+CLASS Member
+    name : TEXT
+    sessions : NUMBER
+
+    METHOD ATTEND()
+        sessions EQUAL TO  sessions + 1
+        DISPLAY "Sessions attended: " + sessions
+    END METHOD
+
+    METHOD CHECK_REWARD()
+        IF sessions GRATER THAN OR EQUAL 10 THEN
+            DISPLAY "Free session earned!"
+        ELSE
+            DISPLAY "Keep going: " + sessions + " sessions"
+        ENDIF
+    END METHOD
+END CLASS
+
+CREATE member1 AS Member
+member1.name "Ali"
+member1.sessions  0
+
+FOR I 1 TO 10
+    CALL nember1.ATTEND()
+END FOR
+
+	CALL nember1.CHECK_REWARD()
+END
+
+*********************************************************
+
+TASK 9 — Inventory Check
+---------------------------------------------------------
+Create a Warehouse class with:
+   ATTRIBUTES: items (LIST)
+   METHODS:
+      ADD_ITEM(item)     – adds item to the list
+      CHECK_ITEMS()      – loops through all items and displays each one
+      FIND_ITEM(target)  – loops through items, if target is found display "Found: " + target
+                           if not found display "Not found"
+
+Create 1 warehouse object.
+Add: "Laptop", "Mouse", "Keyboard"
+Call CHECK_ITEMS(), then search for "Mouse", then search for "Monitor".
+
+Expected Output:
+   Laptop
+   Mouse
+   Keyboard
+   Found: Mouse
+   Not found
+
+CLASS Warehouse
+    items : NUMBER
+    METHOD ADD_ITEM(item)
+        ADD item TO items
+    END METHOD
+
+    METHOD CHECK_ITEMS()
+        FOR each item IN items
+            DISPLAY item
+        END FOR
+    END METHOD
+
+    METHOD FIND_ITEM(target)
+        found EQUAL TO FALSE
+
+        FOR each item IN items
+            IF item EQUAL TO target THEN
+                DISPLAY "Found: " + target
+                found EQUAL TO TRUE
+            ENDIF
+        END FOR
+
+        IF found EQUAL TO FALSE THEN
+            DISPLAY "Not found"
+        ENDIF
+    END METHOD
+END CLASS
+
+CREATE store AS Warehouse
+
+CALL store.ADD_ITEM("Laptop")
+CALL store.ADD_ITEM("Mouse")
+CALL store.ADD_ITEM("Keyboard")
+
+CALL store.CHECK_ITEMS()
+
+CALL store.FIND_ITEM("Mouse")
+CALL store.FIND_ITEM("Monitor")
+
+*********************************************************
+
+TASK 10 — Hospital Patient Manager
+---------------------------------------------------------
+Create a Patient class with:
+   ATTRIBUTES: name (TEXT), age (NUMBER), symptoms (LIST)
+   METHODS:
+      ADD_SYMPTOM(symptom)  – adds symptom to the list
+      SHOW_REPORT()         – displays patient name and age
+                              loops through symptoms and displays each one
+      CHECK_PRIORITY()      – if size of symptoms >= 3 display "High Priority"
+                              otherwise display "Normal Priority"
+
+Create 2 patient objects with different names, ages, and symptoms.
+Add 3 symptoms to the first patient, 1 symptom to the second.
+Call SHOW_REPORT() and CHECK_PRIORITY() on both.
+
+Expected Output (example):
+   Patient: Ali | Age: 45
+   - Fever
+   - Cough
+   - Fatigue
+   High Priority
+
+   Patient: Reem | Age: 29
+   - Headache
+   Normal Priority
+
+
+CLASS Patient
+    name : NAME
+    age : NUMBER
+    symptoms 
+    METHOD ADD_SYMPTOM(symptom)
+        ADD symptom TO symptoms
+    END METHOD
+
+    METHOD SHOW_REPORT()
+        DISPLAY "Patient: " + name + "  Age: " + age
+
+        FOR each s IN symptoms
+            DISPLAY "- " + s
+        END FOR
+    END METHOD
+
+    METHOD CHECK_PRIORITY()
+        IF SIZE(symptoms) GRATER THAN OR EQUAL TO 3 THEN
+            DISPLAY "High Priority"
+        ELSE
+            DISPLAY "Normal Priority"
+        ENDIF
+    END METHOD
+END CLASS
+
+CREATE p1 AS Patient
+p1.name  "Ali"
+p1.age  45
+
+CALL p1.ADD_SYMPTOM("Fever")
+CALL p1.ADD_SYMPTOM("Cough")
+CALL p1.ADD_SYMPTOM("Fatigue")
+
+CREATE p2 AS Patient
+p2.name ← "Reem"
+p2.age ← 29
+
+CALL p2.ADD_SYMPTOM("Headache")
+
+CALL p1.SHOW_REPORT()
+CALL p1.CHECK_PRIORITY()
+
+CALL p2.SHOW_REPORT()
+CALL p2.CHECK_PRIORITY()
+.......   .............   ..........   ...........  ........END.......  ...........   .............   .............

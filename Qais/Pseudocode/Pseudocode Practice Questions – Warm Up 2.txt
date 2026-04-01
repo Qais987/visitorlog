@@ -1,0 +1,461 @@
+Q31 — String Times 
+Given a TEXT STR and a NUMBER N, return a new TEXT that is N copies of STR joined 
+together. 
+Test Cases: 
+stringTimes("Hi", 2) → "HiHi" 
+stringTimes("Hi", 3) → "HiHiHi" 
+stringTimes("Hi", 1) → "Hi" 
+
+START
+BEGIN
+SET STR TO TEXT
+SET N TO NUMBER
+SET RESULT TO EMPTY STRING
+FOR I FROM 1 TO N
+    SET RESULT TO RESULT + STR
+END FOR
+DISPLAY RESULT
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q32 — Front Times 
+Given a TEXT STR and a NUMBER N, the FRONT is the first 3 characters (or less if 
+shorter). Return N copies of the FRONT joined together. 
+Test Cases: 
+frontTimes("Chocolate", 2) → "ChoCho" 
+frontTimes("Chocolate", 3) → "ChoChoCho" 
+frontTimes("Abc", 3)       
+→ "AbcAbcAbc" 
+
+
+START
+BEGIN
+SET STR TO TEXT
+SET N TO NUMBER
+IF LENGTH OF STR < 3 THEN
+    SET FRONT TO STR
+ELSE
+    SET FRONT TO CHARACTERS FROM STR INDEX 0 TO 2
+END IF
+SET RESULT TO EMPTY STRING
+FOR I FROM 1 TO N
+    SET RESULT TO RESULT + FRONT
+END FOR
+DISPLAY RESULT
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q33 — Count XX 
+Given a TEXT STR, count the number of times "xx" appears. Overlapping counts, so 
+"xxx" contains 2 instances. 
+Test Cases: 
+countXX("abcxx") → 1 
+countXX("xxx")   → 2 
+countXX("xxxx")  → 3 
+
+
+START
+BEGIN
+SET STR TO TEXT
+SET COUNT TO 0
+FOR I FROM 0 TO LENGTH OF STR - 2
+    IF CHARACTER AT STR[I] = 'x' AND CHARACTER AT STR[I+1] = 'x' THEN
+        SET COUNT TO COUNT + 1
+    END IF
+END FOR
+DISPLAY COUNT
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q34 — Double X 
+Given a TEXT STR, return TRUE if the FIRST occurrence of "x" is immediately followed 
+by another "x". 
+Test Cases: 
+doubleX("axxbb")  → TRUE 
+doubleX("axaxax") → FALSE 
+doubleX("xxxxx")  → TRUE 
+
+
+START
+BEGIN
+SET STR TO TEXT
+SET INDEX TO POSITION OF FIRST 'x' IN STR
+IF INDEX = -1 OR INDEX = LENGTH OF STR - 1 THEN
+    DISPLAY FALSE
+ELSE
+    IF CHARACTER AT STR[INDEX + 1] = 'x' THEN
+        DISPLAY TRUE
+    ELSE
+        DISPLAY FALSE
+    END IF
+END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q35 — String Bits 
+Given a TEXT STR, return a new TEXT made of every OTHER character starting with the 
+f
+irst (index 0, 2, 4 ...). 
+Test Cases: 
+stringBits("Hello")     → "Hlo" 
+stringBits("Hi")       
+ → "H" 
+stringBits("Heeololeo") → "Hello"
+
+
+START
+BEGIN
+SET STR TO <input string>
+SET RESULT TO EMPTY STRING
+FOR I FROM 0 TO LENGTH OF STR - 1 STEP 2
+    SET RESULT TO RESULT + CHARACTER AT STR[I]
+END FOR
+DISPLAY RESULT
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q36 — String Splosion 
+Given a non-empty TEXT STR, return a new TEXT built by taking increasingly longer 
+prefixes of STR and joining them. So "Code" gives "C" + "Co" + "Cod" + "Code". 
+Test Cases: 
+stringSplosion("Code") → "CCoCodCode" 
+stringSplosion("abc")  → "aababc" 
+stringSplosion("ab")   → "aab" 
+
+START
+BEGIN
+SET STR TO TEXT
+SET RESULT TO EMPTY STRING
+FOR I FROM 1 TO LENGTH OF STR
+    SET RESULT TO RESULT + SUBSTRING OF STR FROM INDEX 0 TO I-1
+END FOR
+DISPLAY RESULT
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q37 — Last 2 
+Given a TEXT STR, find the substring of LENGTH 2 that appears at the very end. Count 
+how many times that same substring appears elsewhere in the string (do NOT count 
+the end occurrence itself). 
+Test Cases: 
+last2("hixxhi")    → 1 
+last2("xaxxaxaxx") → 1 
+last2("axxxaaxx")  → 2
+
+START
+BEGIN
+SET STR TO TEXT
+IF LENGTH OF STR < 2 THEN
+    DISPLAY 0
+ELSE
+    SET LAST2 TO SUBSTRING OF STR FROM INDEX LENGTH-2 TO END
+    SET COUNT TO 0
+    FOR I FROM 0 TO LENGTH OF STR - 3
+        IF SUBSTRING OF STR FROM INDEX I TO I+1 = LAST2 THEN
+            SET COUNT TO COUNT + 1
+        END IF
+    END FOR
+    DISPLAY COUNT
+END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q38 — Array Count 9 
+Given an ARRAY of NUMBERs, return the count of how many times the value 9 appears. 
+Test Cases: 
+arrayCount9([1, 2, 9])       
+arrayCount9([1, 9, 9])       
+→ 1 
+→ 2 
+arrayCount9([1, 9, 9, 3, 9]) → 3 
+
+
+START
+BEGIN
+SET ARR TO NUMBER
+SET COUNT TO 0
+FOR EACH NUMBER IN ARR
+    IF NUMBER = 9 THEN
+        SET COUNT TO COUNT + 1
+    END IF
+END FOR
+DISPLAY COUNT
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q39 — Array Front 9 
+Given an ARRAY of NUMBERs, return TRUE if any of the FIRST 4 elements is a 9. The 
+array may have fewer than 4 elements. 
+Test Cases: 
+arrayFront9([1, 2, 9, 3, 4]) → TRUE 
+arrayFront9([1, 2, 3, 4, 9]) → FALSE 
+arrayFront9([1, 2, 3, 4, 5]) → FALSE 
+
+
+START
+BEGIN
+SET ARR TO NUMBER
+SET END_INDEX TO MINIMUM OF 4 AND LENGTH OF ARR
+FOR I FROM 0 TO END_INDEX - 1
+    IF ARR[I] = 9 THEN
+        DISPLAY TRUE
+        STOP
+    END IF
+END FOR
+DISPLAY FALSE
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q40 — Array 1 2 3 
+Given an ARRAY of NUMBERs, return TRUE if the sequence 1, 2, 3 appears 
+consecutively anywhere in the array. 
+Test Cases: 
+array123([1, 1, 2, 3, 1])    → TRUE 
+array123([1, 1, 2, 4, 1])    → FALSE 
+array123([1, 1, 2, 1, 2, 3]) → TRUE 
+
+START
+BEGIN
+SET ARR TO NUMBER
+FOR I FROM 0 TO LENGTH OF ARR - 3
+    IF ARR[I] = 1 AND ARR[I+1] = 2 AND ARR[I+2] = 3 THEN
+        DISPLAY TRUE
+        STOP
+    END IF
+END FOR
+DISPLAY FALSE
+END
+STOP
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q41 — String Match 
+Given 2 TEXT values A and B, count the number of positions where both strings share 
+the same LENGTH 2 substring. Only check positions that are valid in BOTH strings. 
+Test Cases: 
+stringMatch("xxcaazz", "xxbaaz") → 3 
+stringMatch("abc", "abc")       
+stringMatch("abc", "axc")       
+ → 2 
+ → 0 
+
+
+START
+BEGIN
+SET A TO TEXT
+SET B TO TEXT
+SET COUNT TO 0
+SET MIN_LENGTH TO MINIMUM OF LENGTH(A) AND LENGTH(B)
+FOR I FROM 0 TO MIN_LENGTH - 2
+    IF SUBSTRING OF A FROM INDEX I TO I+1 = SUBSTRING OF B FROM INDEX I TO I+1 THEN
+        SET COUNT TO COUNT + 1
+    END IF
+END FOR
+DISPLAY COUNT
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q42 — String X 
+Given a TEXT STR, return a new TEXT where all "x" characters have been removed — 
+EXCEPT for an "x" at the very first or very last index. 
+Test Cases: 
+stringX("xxHxix")    → "xHix" 
+stringX("abxxxcd")   → "abcd" 
+stringX("xabxxxcdx") → "xabcdx"
+
+
+START
+BEGIN
+SET STR TO TEXT
+IF LENGTH OF STR LESS THAN OR EQUAL TO 2 THEN
+    DISPLAY STR
+ELSE
+    SET FIRST_CHAR TO STR AT INDEX 0
+    SET LAST_CHAR TO STR AT INDEX LENGTH OF STR MINUS 1
+    SET MIDDLE TO SUBSTRING OF STR FROM INDEX 1 TO LENGTH OF STR MINUS 2
+    REPLACE ALL 'x' IN MIDDLE WITH EMPTY STRING
+    DISPLAY FIRST_CHAR + MIDDLE + LAST_CHAR
+END IF
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q43 — Alt Pairs 
+Given a TEXT STR, return a new TEXT made of character PAIRS at indexes 0–1, 4–5, 8–9 
+and so on. Skip the pairs in between. 
+Test Cases: 
+altPairs("kitten")       
+→ "kien" 
+altPairs("Chocolate")    → "Chole" 
+altPairs("CodingHorror") → "Congrr" 
+
+
+START
+BEGIN
+SET STR TO TEXT
+SET RESULT TO EMPTY STRING
+SET I TO 0
+WHILE I LESS THAN LENGTH OF STR
+    SET END_INDEX TO I + 1
+    IF END_INDEX GREATER THAN OR EQUAL TO LENGTH OF STR THEN
+        SET END_INDEX TO LENGTH OF STR MINUS 1
+    END IF
+    APPEND SUBSTRING OF STR FROM INDEX I TO END_INDEX TO RESULT
+    SET I TO I + 4
+END WHILE
+DISPLAY RESULT
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q44 — String Yak 
+Given a TEXT STR, remove every occurrence of a 3-character sequence that starts with 
+"y", ends with "k", and has ANY character in between. Return the remaining string. 
+Test Cases: 
+stringYak("yakpak")   → "pak" 
+stringYak("pakyak")   → "pak" 
+stringYak("yak123ya") → "123ya"
+
+START
+BEGIN
+SET STR TO TEXT
+SET RESULT TO EMPTY STRING
+SET I TO 0
+WHILE I LESS THAN LENGTH OF STR
+    IF I LESS THAN OR EQUAL TO LENGTH OF STR MINUS 3 AND 
+       CHARACTER AT STR[I] = 'y' AND
+       CHARACTER AT STR[I+2] = 'k' THEN
+        SET I TO I + 3
+    ELSE
+        APPEND CHARACTER AT STR[I] TO RESULT
+        SET I TO I + 1
+    END IF
+END WHILE
+DISPLAY RESULT
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q45 — Array 6 6 7 
+Given an ARRAY of NUMBERs, count the number of times two 6's appear next to each 
+other. Also count cases where the second 6 is instead a 7. 
+Test Cases: 
+array667([6, 6, 2])    → 1 
+array667([6, 6, 2, 6]) → 1 
+array667([6, 7, 2, 6]) → 1 
+
+
+START
+BEGIN
+SET ARR TO NUMBER
+SET COUNT TO 0
+FOR I FROM 0 TO LENGTH OF ARR MINUS 2
+    IF ARR[I] = 6 AND (ARR[I+1] = 6 OR ARR[I+1] = 7) THEN
+        SET COUNT TO COUNT + 1
+    END IF
+END FOR
+DISPLAY COUNT
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+
+Q46 — No Triples 
+Given an ARRAY of NUMBERs, return TRUE if the array does NOT contain any "triple" — 
+meaning the same value appearing 3 times in a row. 
+Test Cases: 
+noTriples([1, 1, 2, 2, 1])      
+ → TRUE 
+noTriples([1, 1, 2, 2, 2, 1])    → FALSE 
+noTriples([1, 1, 1, 2, 2, 2, 1]) → FALSE 
+
+START
+BEGIN
+SET ARR TO NUMBER
+FOR I FROM 0 TO LENGTH OF ARR MINUS 3
+    IF ARR[I] = ARR[I+1] AND ARR[I] = ARR[I+2] THEN
+        DISPLAY FALSE
+        STOP
+    END IF
+END FOR
+DISPLAY TRUE
+END
+STOP
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+Q47 — Has 2 7 1 
+Given an ARRAY of NUMBERs, return TRUE if it contains a pattern where a value V is 
+followed by V + 5, followed by a third value within 2 of V - 1. 
+Test Cases: 
+has271([1, 2, 7, 1]) → TRUE 
+has271([1, 2, 8, 1]) → FALSE 
+has271([2, 7, 1])    → TRUE
+
+START
+BEGIN
+SET ARR TO NUMBER
+FOR I FROM 0 TO LENGTH OF ARR MINUS 3
+    SET V TO ARR[I]
+    SET NEXT TO ARR[I+1]
+    SET THIRD TO ARR[I+2]
+    IF NEXT = V + 5 AND THIRD GREATER THAN OR EQUAL TO V - 3 AND THIRD LESS THAN OR EQUAL TO V + 1 THEN
+        DISPLAY TRUE
+        STOP
+    END IF
+END FOR
+DISPLAY FALSE
+END
+STOP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

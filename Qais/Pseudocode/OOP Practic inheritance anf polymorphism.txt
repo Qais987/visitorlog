@@ -1,0 +1,298 @@
+Task 1 – Animal Sound System 
+
+CLASS Animal
+    ATTRIBUTES: name (TEXT), age (NUMBER)
+
+    METHOD makeSound()
+        DISPLAY "Animal makes a sound"
+    END METHOD
+END CLASS
+
+
+CLASS Dog INHERITS Animal
+    METHOD makeSound()
+        DISPLAY name + " barks"
+    END METHOD
+END CLASS
+
+
+CLASS Cat INHERITS Animal
+    METHOD makeSound()
+        DISPLAY name + " meows"
+    END METHOD
+END CLASS
+
+
+CLASS Cow INHERITS Animal
+    METHOD makeSound()
+        DISPLAY name + " moos"
+    END METHOD
+END CLASS
+
+
+...........................................................................................................
+
+Task 2 – Employee Payment System 
+
+CLASS Employee
+    ATTRIBUTES: name (TEXT), baseSalary (NUMBER)
+
+    METHOD calculatePay()
+        RETURN baseSalary
+    END METHOD
+END CLASS
+
+
+CLASS FullTimeEmployee INHERITS Employee
+    ATTRIBUTE bonus (NUMBER)
+
+    METHOD calculatePay()
+        totalPay EQUAL baseSalary + bonus
+        RETURN totalPay
+    END METHOD
+END CLASS
+
+
+CLASS PartTimeEmployee INHERITS Employee
+    ATTRIBUTES: hourlyRate (NUMBER), hoursWorked (NUMBER)
+
+    METHOD calculatePay()
+        totalPay EQUAL hourlyRate * hoursWorked
+        RETURN totalPay
+    END METHOD
+END CLASS
+
+
+CREATE emp1 AS FullTimeEmployee
+SET emp1.name EQUAL "Ali"
+SET emp1.baseSalary EQUAL 1000
+SET emp1.bonus EQUAL 200
+
+CREATE emp2 AS PartTimeEmployee
+SET emp2.name EQUAL "Sara"
+SET emp2.hourlyRate EQUAL 20
+SET emp2.hoursWorked EQUAL 40
+
+CREATE emp3 AS PartTimeEmployee
+SET emp3.name EQUAL "Omar"
+SET emp3.hourlyRate EQUAL 15
+SET emp3.hoursWorked EQUAL 30
+
+CREATE LIST employees
+ADD emp1 TO employees
+ADD emp2 TO employees
+ADD emp3 TO employees
+
+FOR EACH emp IN employees
+    DISPLAY emp.name
+    DISPLAY emp.calculatePay()
+END FOR
+
+
+
+CREATE dog1 AS Dog
+SET dog1.name EQUAL "Buddy"
+SET dog1.age EQUAL 3
+
+CREATE cat1 AS Cat
+SET cat1.name EQUAL "Luna"
+SET cat1.age EQUAL 2
+
+CREATE cow1 AS Cow
+SET cow1.name EQUAL "Bella"
+SET cow1.age EQUAL 4
+
+CREATE LIST animals
+ADD dog1 TO animals
+ADD cat1 TO animals
+ADD cow1 TO animals
+
+FOR EACH animal IN animals
+    CALL animal.makeSound()
+END FOR
+
+
+...................................................................................................................
+Task 3 – Shape Area Calculator 
+
+CLASS Shape
+    METHOD calculateArea()
+        DISPLAY "Area cannot be calculated"
+    END METHOD
+END CLASS
+
+
+CLASS Circle INHERITS Shape
+    ATTRIBUTE radius
+
+    METHOD calculateArea()
+        RETURN 3.14 * radius * radius
+    END METHOD
+END CLASS
+
+
+CLASS Rectangle INHERITS Shape
+    ATTRIBUTES: length, width
+
+    METHOD calculateArea()
+        RETURN length * width
+    END METHOD
+END CLASS
+
+
+CLASS Triangle INHERITS Shape
+    ATTRIBUTES: base, height
+
+    METHOD calculateArea()
+        RETURN 0.5 * base * height
+    END METHOD
+END CLASS
+
+
+CREATE circle1 AS Circle
+SET circle1.radius EQUAL 5
+
+CREATE rect1 AS Rectangle
+SET rect1.length EQUAL 4
+SET rect1.width EQUAL 6
+
+CREATE tri1 AS Triangle
+SET tri1.base EQUAL 10
+SET tri1.height EQUAL 4
+
+CREATE LIST shapes
+ADD circle1 TO shapes
+ADD rect1 TO shapes
+ADD tri1 TO shapes
+
+FOR EACH shape IN shapes
+    DISPLAY "Shape area EQUAL " + shape.calculateArea()
+END FOR
+
+
+................................................................................................................
+Task 4 – Vehicle Rental System 
+
+CLASS Vehicle
+    ATTRIBUTES: brand (TEXT), pricePerDay (NUMBER)
+
+    METHOD calculateRent(days)
+        RETURN pricePerDay * days
+    END METHOD
+END CLASS
+
+
+CLASS Car INHERITS Vehicle
+    METHOD calculateRent(days)
+        RETURN pricePerDay * days
+    END METHOD
+END CLASS
+
+
+CLASS Bike INHERITS Vehicle
+    METHOD calculateRent(days)
+        RETURN (pricePerDay * days) - 5
+    END METHOD
+END CLASS
+
+
+CLASS Truck INHERITS Vehicle
+    METHOD calculateRent(days)
+        RETURN (pricePerDay * days) + 20
+    END METHOD
+END CLASS
+
+
+CREATE car1 AS Car
+SET car1.brand = "Toyota"
+SET car1.pricePerDay = 50
+
+CREATE bike1 AS Bike
+SET bike1.brand = "Yamaha"
+SET bike1.pricePerDay = 30
+
+CREATE truck1 AS Truck
+SET truck1.brand = "Volvo"
+SET truck1.pricePerDay = 80
+
+CREATE LIST vehicles
+ADD car1 TO vehicles
+ADD bike1 TO vehicles
+ADD truck1 TO vehicles
+
+FOR EACH vehicle IN vehicles
+    DISPLAY vehicle.brand + " Rent = " + vehicle.calculateRent(3)
+END FOR
+
+
+..........................................................................................................
+Task 5 – University Member System 
+
+CLASS Person
+    ATTRIBUTES: name (TEXT), id (NUMBER)
+
+    METHOD displayInfo()
+        DISPLAY name
+        DISPLAY id
+    END METHOD
+END CLASS
+
+
+CLASS Student INHERITS Person
+    ATTRIBUTE major
+
+    METHOD displayInfo()
+        DISPLAY name
+        DISPLAY id
+        DISPLAY major
+    END METHOD
+END CLASS
+
+
+CLASS Teacher INHERITS Person
+    ATTRIBUTE subject
+
+    METHOD displayInfo()
+        DISPLAY name
+        DISPLAY id
+        DISPLAY subject
+    END METHOD
+END CLASS
+
+
+CLASS Administrator INHERITS Person
+    ATTRIBUTE department
+
+    METHOD displayInfo()
+        DISPLAY name
+        DISPLAY id
+        DISPLAY department
+    END METHOD
+END CLASS
+
+
+CREATE student1 AS Student
+SET student1.name = "Ali"
+SET student1.id = 101
+SET student1.major = "Computer Science"
+
+CREATE teacher1 AS Teacher
+SET teacher1.name = "Sara"
+SET teacher1.id = 201
+SET teacher1.subject = "Mathematics"
+
+CREATE admin1 AS Administrator
+SET admin1.name = "Omar"
+SET admin1.id = 301
+SET admin1.department = "Admissions"
+
+CREATE LIST people
+ADD student1 TO people
+ADD teacher1 TO people
+ADD admin1 TO people
+
+FOR EACH person IN people
+    CALL person.displayInfo()
+END FOR
+
+........................................................END........................................................

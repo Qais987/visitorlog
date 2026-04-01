@@ -1,0 +1,13 @@
+START
+DISPLAY "Enter username:"
+READ username
+
+DISPLAY "Enter password:"
+READ password
+
+IF username="admin" and password="1234" THEN
+	DISPLAY "Login Successful"
+ELSE
+	DISPLAY "Invalid Credentials"
+END IF
+STOPE
